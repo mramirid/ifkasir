@@ -2,6 +2,9 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Buat test template aja
+ */
 class Template extends MY_Controller 
 {
     public function index()
