@@ -12,7 +12,7 @@ class Home extends MY_Controller
         $data['page']               = 'pages/home/index';
         $data['title']              = 'IFKasir - Dashboard';
         $data['breadcrumb_title']   = 'Hallo Admin 😊';
-        $data['breadcrumb_path']    = 'Dashboard';
+        $data['breadcrumb_path']    = 'Home / Dashboard';
         
         $this->view($data);
     }
