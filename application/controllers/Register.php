@@ -8,12 +8,12 @@ class Register extends MY_Controller
     {
         parent::__construct();
         
-        // $is_login = $this->session->userdata('is_login');
+        $is_login = $this->session->userdata('is_login');
         
-        // if ($is_login) {
-        //     redirect(base_url('home'));
-        //     return;
-        // }
+        if (!$is_login) {
+            redirect(base_url('login'));
+            return;
+        }
     }
 
     public function index()
