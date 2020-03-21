@@ -2,9 +2,9 @@
 <!-- Container fluid  -->
 <!-- ============================================================== -->
 <div class="container-fluid">
-    <!-- *************************************************************** -->
-    <!-- Start First Cards -->
-    <!-- *************************************************************** -->
+    
+    <?php $this->load->view('layouts/_alert') ?>
+    
     <div class="card-group">
         <div class="card border-right">
             <div class="card-body">

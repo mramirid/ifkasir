@@ -19,9 +19,13 @@ class MY_Controller extends CI_Controller
     /**
      * Load view with default layouts
      */
-    public function view($data)
+    public function view($data, $openLoginPage = false)
     {
-        $this->load->view('layouts/app', $data);
+        if ($openLoginPage) {
+            $this->load->view('pages/auth/login', $data);
+        } else {
+            $this->load->view('layouts/dashboard', $data);
+        }
     }
 }
 
