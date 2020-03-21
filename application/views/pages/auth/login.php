@@ -13,12 +13,6 @@
     <title><?= $title ?></title>
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/css/style.min.css') ?>" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -39,9 +33,45 @@
         <!-- Login box.scss -->
         <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
-            style="background:url(../assets/images/big/auth-bg.jpg) no-repeat center center;">
-            <div class="auth-box row text-center">
-                <?php $this->load->view($page) ?>
+            style="background:url(<?= base_url('assets/images/big/auth-bg.jpg') ?>) no-repeat center center;">
+            <div class="auth-box row">
+                <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(<?= base_url('assets/images/auth/login.jpg') ?>);">
+                </div>
+                <div class="col-lg-5 col-md-7 bg-white">
+                    <div class="p-3">
+                        <h2 class="mt-3 text-center">Login</h2>
+                        <p class="text-center">Masukan alamat email dan password untuk mengakses panel admin</p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <?php $this->load->view('layouts/_alert') ?>
+                            </div>
+                        </div>
+                        <form action="<?= base_url('login') ?>" class="mt-2" method="POST">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="">Email</label>
+                                        <?= form_input(['type' => 'email', 'name' => 'email', 'value' => $input->email, 'class' => 'form-control', 'placeholder' => 'Masukan email anda', 'required' => true]) ?>
+                                        <?= form_error('email') ?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="">Password</label>
+                                        <?= form_password('password', '', ['class' => 'form-control', 'placeholder' => 'Masukkan password', 'required' => true]) ?>
+                                        <?= form_error('password') ?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn btn-block btn-dark">Login</button>
+                                </div>
+                                <div class="col-lg-12 text-center mt-5">
+                                    Lupa email/password? Silahkan hubungi admin.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- ============================================================== -->

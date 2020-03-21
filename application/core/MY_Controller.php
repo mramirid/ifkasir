@@ -22,7 +22,7 @@ class MY_Controller extends CI_Controller
     public function view($data, $openLoginPage = false)
     {
         if ($openLoginPage) {
-            $this->load->view('layouts/auth', $data);
+            $this->load->view('pages/auth/login', $data);
         } else {
             $this->load->view('layouts/dashboard', $data);
         }

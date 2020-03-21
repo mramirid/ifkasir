@@ -76,10 +76,11 @@ class Register_model extends MY_Model
         $user = $this->create($data);   // Insert database
 
         $sess_data = [
-            'id'        => $user,
+            'id_user'   => $user,
             'nama'      => $data['nama'],
             'email'     => $data['email'],
             'telefon'   => $data['telefon'],
+            'ktp'       => $data['ktp'],
             'role'      => $data['role'],
             'is_login'  => true
         ];
