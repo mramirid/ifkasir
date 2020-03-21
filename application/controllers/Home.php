@@ -21,9 +21,11 @@ class Home extends MY_Controller
 
     public function index()
     {
+        $nama = $this->session->userdata('nama');
+
         $data['page']               = 'pages/home/index';
         $data['title']              = 'IFKasir - Dashboard';
-        $data['breadcrumb_title']   = 'Hallo Admin 😊';
+        $data['breadcrumb_title']   = "Hallo $nama 😊";
         $data['breadcrumb_path']    = 'Home / Dashboard';
         
         $this->view($data);
