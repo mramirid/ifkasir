@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-5 align-self-center">
                         <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-rounded"><i class="fas fa-calendar"></i> &nbsp;<?= date('d-m-Y') ?></button>
+                            <button type="button" class="btn btn-primary btn-rounded"><i class="fas fa-calendar"></i> &nbsp;<?= date('d/m/y') ?></button>
                         </div>
                     </div>
                 </div>

@@ -61,23 +61,27 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
-                <li class="nav-item d-none d-md-block">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <form>
-                            <div class="customize-input">
-                                <input class="form-control custom-shadow custom-radius border-0 bg-white"
-                                    type="search" placeholder="Search" aria-label="Search">
-                                <i class="form-control-icon" data-feather="search"></i>
-                            </div>
-                        </form>
-                    </a>
-                </li>
+                <?php if ($this->uri->segment(1) == 'cashier') : ?>
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <form>
+                                <div class="customize-input">
+                                    <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                        type="search" placeholder="Search" aria-label="Search">
+                                    <i class="form-control-icon" data-feather="search"></i>
+                                </div>
+                            </form>
+                        </a>
+                    </li>
+                <?php endif ?>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
+                        <img src="<?= $this->session->userdata('role') == 'admin' ? base_url('assets/images/navbar/admin.png') : base_url('assets/images/navbar/user.png') ?>" alt="user" class="rounded-circle"
+                                    width="40">
                         <span class="ml-2 d-none d-lg-inline-block"><span>Hallo,</span> <span
                                 class="text-dark"><?= $this->session->userdata('nama') ?></span> <i data-feather="chevron-down"
                                 class="svg-icon"></i></span>
