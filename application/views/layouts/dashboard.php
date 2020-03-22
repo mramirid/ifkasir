@@ -82,7 +82,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center text-muted">
-                All Rights Reserved by PKL Kelompok Kasir. Designed and Developed by <a href="#">Amir - Alfath - Aliev</a>.
+                All Rights Reserved by PKL Kelompok Kasir. Designed and Developed by Amir - Alfath - Aliev.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

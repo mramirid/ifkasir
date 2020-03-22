@@ -37,15 +37,9 @@
                 <!-- Submemu Manajemen Inventory -->
                 <li class="nav-small-cap"><span class="hide-menu">Manajemen Inventory</span></li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('inventory') ?>" aria-expanded="false">
                         <i data-feather="box" class="feather-icon"></i>
                         <span class="hide-menu">Inventory</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
-                        <i data-feather="plus-square" class="feather-icon"></i>
-                        <span class="hide-menu">Tambah Stok</span>
                     </a>
                 </li>
 
@@ -54,7 +48,7 @@
                 <!-- Submemu Pembukuan -->
                 <li class="nav-small-cap"><span class="hide-menu">Pembukuan</span></li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('pembukuan') ?>" aria-expanded="false">
                         <i data-feather="book" class="feather-icon"></i>
                         <span class="hide-menu">Pembukuan</span>
                     </a>
@@ -82,7 +76,7 @@
                 <!-- Submemu Extra -->
                 <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="https://github.com/mramirid/IFKasir.git" aria-expanded="false">
                         <i data-feather="github" class="feather-icon"></i>
                         <span class="hide-menu">Repository</span>
                     </a>
