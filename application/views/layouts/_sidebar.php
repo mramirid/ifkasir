@@ -20,9 +20,15 @@
                 <!-- Submemu Kasir -->
                 <li class="nav-small-cap"><span class="hide-menu">Kasir</span></li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="<?= base_url('cashier') ?>" aria-expanded="false">
+                        <i data-feather="file-plus" class="feather-icon"></i>
+                        <span class="hide-menu">Pesan</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
                         <i data-feather="shopping-cart" class="feather-icon"></i>
-                        <span class="hide-menu">Pesan</span>
+                        <span class="hide-menu">Keranjang</span>
                     </a>
                 </li>
                 <li class="sidebar-item"> 
