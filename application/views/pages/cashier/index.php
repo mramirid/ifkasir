@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <h5 class="d-inline text-dark">Tampilkan berdasarkan&nbsp;&#8594;&nbsp;</h5>
                     <span>
-                        <a href="#" class="btn btn-rounded btn-primary">Makanan</a>
-                        <a href="#" class="btn btn-rounded btn-danger">Minuman</a>
+                        <a href="<?= base_url('cashier/type/makanan') ?>" class="btn btn-rounded btn-primary">Makanan</a>
+                        <a href="<?= base_url('cashier/type/minuman') ?>" class="btn btn-rounded btn-cyan">Minuman</a>
                     </span>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <?php foreach ($content as $row) : ?>
             <div class="col-md-6">
                 <div class="card border-primary">
-                    <div class="card-header bg-<?= $row->tipe_barang == 'makanan' ? 'primary' : 'danger' ?>">
+                    <div class="card-header bg-<?= $row->tipe_barang == 'makanan' ? 'primary' : 'cyan' ?>">
                         <h4 class="mb-0 text-white"><?= ucfirst($row->tipe_barang) ?></h4>
                     </div>
                     <div class="card-body">
@@ -33,11 +33,11 @@
                         <p class="card-text"><strong>Rp.<?= number_format($row->harga_jual, 0, ',', '.') ?>,-</strong></p>
                         <p class="card-text">Kuantitas barang: <?= $row->qty_inventory ?> buah</p>
                         <form action="<?= base_url('cart/add') ?>" method="POST">
-                            <input type="hidden" name="id_product" value="">
+                            <input type="hidden" name="id_barang" value="<?= $row->id_barang ?>">
                             <div class="input-group">
-                                <input type="number" name="qty" value="1" class="form-control">
+                                <input type="number" name="qty_pesanan" value="1" class="form-control">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">Tambahkan</button>
+                                    <button class="btn btn-light" type="submit">Tambahkan</button>
                                 </div>
                             </div>
                         </form>

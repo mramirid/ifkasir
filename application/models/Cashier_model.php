@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cashier_model extends MY_Model 
 {
-    public $table       = 'stock_barang';
+    protected $table       = 'stock_barang';
     protected $perPage  = 2;
 }
 

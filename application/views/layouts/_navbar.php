@@ -63,16 +63,16 @@
                 <!-- ============================================================== -->
                 <?php if ($this->uri->segment(1) == 'cashier') : ?>
                     <li class="nav-item d-none d-md-block">
-                        <a class="nav-link" href="javascript:void(0)">
-                            <form>
+                        <a class="nav-link">
+                            <form action="<?= base_url('cashier/search') ?>" method="POST">
                                 <div class="customize-input">
-                                    <input class="form-control custom-shadow custom-radius border-0 bg-white"
-                                        type="search" placeholder="Search" aria-label="Search">
+                                    <input name="keyword" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Search" aria-label="Search" value="<?= $this->session->userdata('keyword') ?>">
                                     <i class="form-control-icon" data-feather="search"></i>
                                 </div>
                             </form>
                         </a>
                     </li>
+                <?php if ($this->uri->segment(1) == 'cashier') : ?>
                 <?php endif ?>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
@@ -80,27 +80,28 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <img src="<?= $this->session->userdata('role') == 'admin' ? base_url('assets/images/navbar/admin.png') : base_url('assets/images/navbar/user.png') ?>" alt="user" class="rounded-circle"
-                                    width="40">
-                        <span class="ml-2 d-none d-lg-inline-block"><span>Hallo,</span> <span
-                                class="text-dark"><?= $this->session->userdata('nama') ?></span> <i data-feather="chevron-down"
-                                class="svg-icon"></i></span>
+                        <img src="<?= $this->session->userdata('role') == 'admin' ? base_url('assets/images/navbar/admin.png') : base_url('assets/images/navbar/user.png') ?>" alt="user" class="rounded-circle" width="40">
+                        <span class="ml-2 d-none d-lg-inline-block">
+                            <span>Hallo,</span>
+                            <span class="text-dark"><?= $this->session->userdata('nama') ?></span>
+                            <i data-feather="chevron-down"class="svg-icon"></i>
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
-                                class="svg-icon mr-2 ml-1"></i>
-                            My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
-                                class="svg-icon mr-2 ml-1"></i>
-                            My Balance</a>
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i data-feather="user" class="svg-icon mr-2 ml-1"></i>My Profile
+                        </a>
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i data-feather="credit-card" class="svg-icon mr-2 ml-1"></i>My Balance
+                        </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
-                                class="svg-icon mr-2 ml-1"></i>
-                            Account Setting</a>
+                        <a class="dropdown-item" href="javascript:void(0)">
+                            <i data-feather="settings" class="svg-icon mr-2 ml-1"></i>Account Setting
+                        </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= base_url('logout') ?>"><i data-feather="power"
-                                class="svg-icon mr-2 ml-1"></i>
-                            Logout</a>
+                        <a class="dropdown-item" href="<?= base_url('logout') ?>">
+                            <i data-feather="power" class="svg-icon mr-2 ml-1"></i>Logout
+                        </a>
                     </div>
                 </li>
                 <!-- ============================================================== -->

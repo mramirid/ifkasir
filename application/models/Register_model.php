@@ -73,19 +73,7 @@ class Register_model extends MY_Model
             'role'      => 'kasir'
         ];
 
-        $user = $this->create($data);   // Insert database
-
-        $sess_data = [
-            'id_user'   => $user,
-            'nama'      => $data['nama'],
-            'email'     => $data['email'],
-            'telefon'   => $data['telefon'],
-            'ktp'       => $data['ktp'],
-            'role'      => $data['role'],
-            'is_login'  => true
-        ];
-
-        $this->session->set_userdata($sess_data);
+        $user = $this->create($data);
 
         return true;
     }

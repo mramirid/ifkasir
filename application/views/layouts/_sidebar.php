@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link" href="<?= base_url('cart') ?>" aria-expanded="false">
                         <i data-feather="shopping-cart" class="feather-icon"></i>
                         <span class="hide-menu">Keranjang</span>
                     </a>
@@ -65,17 +65,25 @@
                 <!-- Submemu Manajemen Karyawan -->
                 <li class="nav-small-cap"><span class="hide-menu">Manajemen Karyawan</span></li>
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('user') ?>" aria-expanded="false">
                         <i data-feather="users" class="feather-icon"></i>
                         <span class="hide-menu">List Karyawan</span>
                     </a>
                 </li>
-                <li class="sidebar-item"> 
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('register') ?>" aria-expanded="false">
-                        <i data-feather="user-plus" class="feather-icon"></i>
-                        <span class="hide-menu">Register</span>
-                    </a>
-                </li>
+                <?php if ($this->session->userdata('role') == 'admin') : ?>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                            <i data-feather="user-check" class="feather-icon"></i>
+                            <span class="hide-menu">Opsi Karyawan</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item"> 
+                        <a class="sidebar-link sidebar-link" href="<?= base_url('register') ?>" aria-expanded="false">
+                            <i data-feather="user-plus" class="feather-icon"></i>
+                            <span class="hide-menu">Register</span>
+                        </a>
+                    </li>
+                <?php endif ?>
                 
                 <li class="list-divider"></li>
 
