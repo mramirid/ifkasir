@@ -61,6 +61,7 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== -->
+                <!-- Menu Pesan menampilkan search box -->
                 <?php if ($this->uri->segment(1) == 'cashier') : ?>
                     <li class="nav-item d-none d-md-block">
                         <a class="nav-link">
@@ -72,7 +73,18 @@
                             </form>
                         </a>
                     </li>
-                <?php if ($this->uri->segment(1) == 'cashier') : ?>
+                <!-- Menu List Karyawan menampilkan search box -->
+                <?php elseif ($this->uri->segment(1) == 'user') : ?>
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link">
+                            <form action="<?= base_url('user/search') ?>" method="POST">
+                                <div class="customize-input">
+                                    <input name="keyword" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Search" aria-label="Search" value="<?= $this->session->userdata('keyword') ?>">
+                                    <i class="form-control-icon" data-feather="search"></i>
+                                </div>
+                            </form>
+                        </a>
+                    </li>
                 <?php endif ?>
                 <!-- ============================================================== -->
                 <!-- User profile and search -->

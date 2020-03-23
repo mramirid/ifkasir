@@ -72,12 +72,6 @@
                 </li>
                 <?php if ($this->session->userdata('role') == 'admin') : ?>
                     <li class="sidebar-item"> 
-                        <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
-                            <i data-feather="user-check" class="feather-icon"></i>
-                            <span class="hide-menu">Opsi Karyawan</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item"> 
                         <a class="sidebar-link sidebar-link" href="<?= base_url('register') ?>" aria-expanded="false">
                             <i data-feather="user-plus" class="feather-icon"></i>
                             <span class="hide-menu">Register</span>
