@@ -65,7 +65,7 @@
                 <!-- Submemu Manajemen Karyawan -->
                 <li class="nav-small-cap"><span class="hide-menu">Manajemen Karyawan</span></li>
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('user') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('users') ?>" aria-expanded="false">
                         <i data-feather="users" class="feather-icon"></i>
                         <span class="hide-menu">Daftar Karyawan</span>
                     </a>

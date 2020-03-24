@@ -54,4 +54,4 @@ $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
 
 $route['cashier/(:num)']    = 'cashier/index/$1';
-$route['user/(:num)']       = 'user/index/$1';
+$route['users/(:num)']      = 'users/index/$1';

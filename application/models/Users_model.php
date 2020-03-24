@@ -2,15 +2,20 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User_model extends MY_Model 
+class Users_model extends MY_Model 
 {
+    protected $table = 'user';
+
     public function getDefaultValues()
     {
         return [
             'nama'      => '',
             'email'     => '',
             'password'  => '',
-            'telefon'   => ''
+            'telefon'   => '',
+            'role'      => '',
+            'status'    => '',
+            'ktp'       => ''
         ];
     }
 
@@ -31,6 +36,21 @@ class User_model extends MY_Model
                 'field' => 'telefon',
                 'label' => 'Nomor Telefon',
                 'rules' => 'trim|required'
+            ],
+            [
+                'field' => 'ktp',
+                'label' => 'Nomor KTP',
+                'rules' => 'trim|required|callback_unique_ktp'
+            ],
+            [
+                'field' => 'status',
+                'label' => 'Status',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'role',
+                'label' => 'Role',
+                'rules' => 'required'
             ]
         ];
 
@@ -38,4 +58,4 @@ class User_model extends MY_Model
     }
 }
 
-/* End of file User_model.php */
+/* End of file Users_model.php */

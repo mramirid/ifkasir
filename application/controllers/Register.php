@@ -37,7 +37,7 @@ class Register extends MY_Controller
         if (!$this->register->validate()) {     // Jika validasi gagal maka arahkan ke form register lagi
             $data['title'] = 'Register Karyawan';
             $data['input'] = $input;
-            $data['page'] = 'pages/user/register';
+            $data['page'] = 'pages/register/index';
             $data['breadcrumb_title']   = 'Register Karyawan';
             $data['breadcrumb_path']    = 'Manajemen Karyawan / Register Karyawan';
         

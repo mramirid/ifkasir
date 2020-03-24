@@ -74,10 +74,10 @@
                         </a>
                     </li>
                 <!-- Menu List Karyawan menampilkan search box -->
-                <?php elseif ($this->uri->segment(1) == 'user') : ?>
+                <?php elseif ($this->uri->segment(1) == 'users') : ?>
                     <li class="nav-item d-none d-md-block">
                         <a class="nav-link">
-                            <form action="<?= base_url('user/search') ?>" method="POST">
+                            <form action="<?= base_url('users/search') ?>" method="POST">
                                 <div class="customize-input">
                                     <input name="keyword" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Search" aria-label="Search" value="<?= $this->session->userdata('keyword') ?>">
                                     <i class="form-control-icon" data-feather="search"></i>
@@ -100,14 +100,14 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
-                        <a class="dropdown-item" href="javascript:void(0)">
+                        <a class="dropdown-item" href="<?= base_url("user") ?>">
                             <i data-feather="user" class="svg-icon mr-2 ml-1"></i>My Profile
                         </a>
-                        <a class="dropdown-item" href="javascript:void(0)">
+                        <a class="dropdown-item" href="#">
                             <i data-feather="credit-card" class="svg-icon mr-2 ml-1"></i>My Balance
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)">
+                        <a class="dropdown-item" href="<?= base_url("user/edit/" . $this->session->userdata('id_user')) ?>">
                             <i data-feather="settings" class="svg-icon mr-2 ml-1"></i>Account Setting
                         </a>
                         <div class="dropdown-divider"></div>
