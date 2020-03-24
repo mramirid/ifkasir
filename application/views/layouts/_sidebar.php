@@ -28,7 +28,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="<?= base_url('cart') ?>" aria-expanded="false">
                         <i data-feather="shopping-cart" class="feather-icon"></i>
-                        <span class="hide-menu">Keranjang</span>
+                        <span class="hide-menu">Keranjang Pesanan</span>
                     </a>
                 </li>
                 <li class="sidebar-item"> 
@@ -67,14 +67,14 @@
                 <li class="sidebar-item"> 
                     <a class="sidebar-link sidebar-link" href="<?= base_url('user') ?>" aria-expanded="false">
                         <i data-feather="users" class="feather-icon"></i>
-                        <span class="hide-menu">List Karyawan</span>
+                        <span class="hide-menu">Daftar Karyawan</span>
                     </a>
                 </li>
                 <?php if ($this->session->userdata('role') == 'admin') : ?>
                     <li class="sidebar-item"> 
                         <a class="sidebar-link sidebar-link" href="<?= base_url('register') ?>" aria-expanded="false">
                             <i data-feather="user-plus" class="feather-icon"></i>
-                            <span class="hide-menu">Register</span>
+                            <span class="hide-menu">Register Karyawan</span>
                         </a>
                     </li>
                 <?php endif ?>

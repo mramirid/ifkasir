@@ -25,8 +25,8 @@ class Cart extends MY_Controller
         $this->session->unset_userdata('keyword');
 
         $data['title']              = 'IFKasir - Keranjang Pesanan';
-        $data['breadcrumb_title']   = "Menu Keranjang Pesanan";
-        $data['breadcrumb_path']    = 'Keranjang';
+        $data['breadcrumb_title']   = "Keranjang Pesanan";
+        $data['breadcrumb_path']    = 'Kasir / Keranjang Pesanan';
         $data['content']            = $this->cart->select([
                 'stock_barang.id_barang', 'stock_barang.nama_barang', 'stock_barang.harga_jual', 
                 'keranjang.id_pesanan', 'keranjang.qty_pesanan', 'keranjang.subtotal_pesanan',
