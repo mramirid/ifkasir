@@ -16,11 +16,11 @@
                         <table class="table no-wrap v-middle mb-0">
                             <thead>
                                 <tr class="border-0">
-                                    <th class="border-0 font-14 font-weight-medium text-muted">Nama</th>
+                                    <th class="border-0 font-14 font-weight-medium text-muted px-2">Nama</th>
                                     <th class="border-0 font-14 font-weight-medium text-muted px-2">Email</th>
                                     <!-- Hanya admin yang boleh liat KTP -->
                                     <?php if ($this->session->userdata('role') == 'admin') : ?>
-                                        <th class="border-0 font-14 font-weight-medium text-muted">KTP</th>
+                                        <th class="border-0 font-14 font-weight-medium text-muted px-2">KTP</th>
                                     <?php endif ?>
                                     <th class="border-0 font-14 font-weight-medium text-muted">Role</th>
                                     <th class="border-0 font-14 font-weight-medium text-muted text-center">Status</th>
@@ -69,7 +69,7 @@
                                         <?php if ($this->session->userdata('role') == 'admin') : ?>
                                             <td class="border-top-0 text-center text-muted px-2 py-4">
                                                 <?= form_open(base_url("user/delete"), ['method' => 'POST']) ?>
-                                                    <?= form_hidden('id', $row->id_user) ?>
+                                                    <?= form_hidden('id_user', $row->id_user) ?>
                                                     <a href="<?= base_url("user/edit/$row->id_user") ?>" class="btn btn-sm">
                                                         <i class="fas fa-edit text-info"></i>
                                                     </a>
@@ -83,12 +83,11 @@
                                 <?php endforeach ?>
                             </tbody>
                         </table>
-
-                        <div class="row d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <?= $pagination ?>
-                            </nav>
-                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <?= $pagination ?>
+                        </nav>
                     </div>
                 </div>
             </div>

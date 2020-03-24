@@ -19,6 +19,8 @@ class User extends MY_Controller
 
     public function index($page = null)
     {
+        $this->session->unset_userdata('keyword');
+        
         $data['title']              = 'IFKasir - List Karyawan';
         $data['breadcrumb_title']   = 'List Karyawan';
         $data['breadcrumb_path']    = 'Manajemen Karyawan / List Karyawan';
@@ -34,7 +36,11 @@ class User extends MY_Controller
     {
         if (isset($_POST['keyword'])) {
             $this->session->set_userdata('keyword', $this->input->post('keyword'));
-        } else {
+        }
+
+        $keyword = $this->session->userdata('keyword');
+
+        if (empty($keyword)) {
             redirect(base_url('user'));
         }
 
@@ -56,6 +62,76 @@ class User extends MY_Controller
         $data['page']               = 'pages/user/index';
 
         $this->view($data);
+    }
+
+    public function edit($id)
+    {
+        // $data['content'] = $this->user->where('id', $id)->first();
+
+        // if (!$data['content']) {
+        //     $this->session->set_flashdata('warning', 'Maaf data tidak ditemukan');
+        //     redirect(base_url('user'));
+        // }
+
+        // if (!$_POST) {
+        //     $data['input'] = $data['content'];
+        // } else {
+        //     $data['input'] = (object) $this->input->post(null, true);
+
+        //     if ($data['input']->password !== '') {
+        //         // Jika password tidak kosong, berati user mengubah password lalu encrypt
+        //         $data['input']->password = hashEncrypt($data['input']->password);
+        //     } else {
+        //         // Jika tidak kosong berati user tidak mengubah password
+        //         $data['input']->password = $data['content']->password;
+        //     }
+        // }
+
+        // if (!$this->user->validate()) {
+        //     $data['title']          = 'Ubah Pengguna';
+        //     $data['form_action']    = base_url("user/edit/$id");
+        //     $data['page']           = 'pages/user/form';
+
+        //     $this->view($data);
+        //     return;
+        // }
+
+        // if ($this->user->where('id', $id)->update($data['input'])) {   // Update data
+        //     $this->session->set_flashdata('success', 'Data berhasil diubah');
+        // } else {
+        //     $this->session->set_flashdata('error', 'Oops! Terjadi suatu kesalahan');
+        // }
+
+        // redirect(base_url('user'));
+    }
+
+    public function delete()
+    {
+        if (!$_POST) {
+            $this->session->set_flashdata('error', 'Akses penghapusan ditolak!');
+            redirect(base_url('user'));
+        }
+
+        $id_user    = $this->input->post('id_user');
+        $user       = $this->user->where('id_user', $id_user)->first();
+
+        if ($user->role == 'admin') {
+            $this->session->set_flashdata('warning', 'Sebagai admin, anda tidak dapat menghapus akun anda sendiri');
+            redirect(base_url('user'));
+        }
+
+        if (!$user) {
+            $this->session->set_flashdata('warning', 'Maaf user tidak ditemukan');
+            redirect(base_url('user'));
+        }
+
+        if ($this->user->where('id_user', $id_user)->delete()) {   // Lakukan penghapusan di db
+            $this->session->set_flashdata('success', 'User berhasil dihapus');
+        } else {
+            $this->session->set_flashdata('error', 'Oops! Terjadi kesalahan');
+        }
+
+        redirect(base_url('user'));
     }
 }
 
