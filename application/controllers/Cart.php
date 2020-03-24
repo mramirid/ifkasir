@@ -93,6 +93,76 @@ class Cart extends MY_Controller
     }
 
     /**
+     * Update kuantitas di keranjang belanja
+     */
+    public function update()
+    {
+        if (!$_POST || $this->input->post('qty_pesanan') < 1) {
+            $this->session->set_flashdata('error', 'Kuantitas tidak boleh kosong');
+            redirect(base_url('cart'));
+        }
+
+        $id_barang = $this->input->post('id_barang');
+
+        $data['content'] = $this->cart->where('id_barang', $id_barang)->first();   // Mengambil data dari cart
+
+        if (!$data['content']) {
+            $this->session->set_flashdata('warning', 'Data tidak ditemukan');
+            redirect(base_url('cart'));
+        }
+
+        // Mengambil data barang yang dipilih, untuk mendapatkan harga barang
+        $this->cart->table  = 'stock_barang';
+        $barang             = $this->cart->where('id_barang', $data['content']->id_barang)->first();
+
+        // Menghitung subtotal baru
+        $data['input']      = (object) $this->input->post(null, true);
+        $subtotal_pesanan   = $data['input']->qty_pesanan * $barang->harga_jual;
+
+        // Update data
+        $cart = [
+            'qty_pesanan'       => $data['input']->qty_pesanan,
+            'subtotal_pesanan'  => $subtotal_pesanan
+        ];
+
+        $this->cart->table  = 'keranjang';
+        if ($this->cart->where('id_barang', $id_barang)->update($cart)) {   // Jika update berhasil
+            $this->session->set_flashdata('success', 'Kuantitas berhasil diubah');
+        } else {
+            $this->session->set_flashdata('error', 'Oops! Terjadi kesalahan');
+        }
+
+        redirect(base_url('cart'));
+    }
+
+    /**
+     * Delete suatu cart di halaman cart
+     */
+    public function delete()
+    {
+        if (!$_POST) {
+            // Jika diakses tidak dengan menggunakan method post, kembalikan ke home (forbidden)
+            $this->session->set_flashdata('error', 'Akses penghapusan pesanan ditolak!');
+            redirect(base_url('home'));
+        }
+
+        $id_pesanan = $this->input->post('id_pesanan');
+
+        if (!$this->cart->where('id_pesanan', $id_pesanan)->first()) {  // Jika pesanan tidak ditemukan
+            $this->session->set_flashdata('warning', 'Maaf data tidak ditemukan');
+            redirect(base_url('cart'));
+        }
+
+        if ($this->cart->where('id_pesanan', $id_pesanan)->delete()) {  // Jika penghapusan pesanan berhasil
+            $this->session->set_flashdata('success', '1 Pesanan berhasil dihapus');
+        } else {
+            $this->session->set_flashdata('error', 'Oops, terjadi suatu kesalahan');
+        }
+
+        redirect(base_url('cashier'));
+    }
+
+    /**
      * Menghapus seluruh isi keranjang
      */
     public function drop()
