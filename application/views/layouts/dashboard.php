@@ -113,10 +113,12 @@
     <!--This page JavaScript -->
     <script src="<?= base_url('assets/extra-libs/c3/d3.min.js') ?>"></script>
     <script src="<?= base_url('assets/extra-libs/c3/c3.min.js') ?>"></script>
-    <script src="<?= base_url('assets/libs/chartist/chartist.min.js') ?>"></script>
-    <script src="<?= base_url('assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js') ?>"></script>
-    <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js') ?>"></script>
-    <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js') ?>"></script>
+    <?php if ($this->uri->segment(1) == 'home') : ?>
+        <script src="<?= base_url('assets/libs/chartist/chartist.min.js') ?>"></script>
+        <script src="<?= base_url('assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js') ?>"></script>
+        <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js') ?>"></script>
+        <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js') ?>"></script>
+    <?php endif ?>
     <script src="<?= base_url('assets/js/pages/dashboards/dashboard1.min.js') ?>"></script>
 
     <script>
