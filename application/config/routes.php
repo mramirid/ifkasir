@@ -55,3 +55,4 @@ $route['translate_uri_dashes']  = FALSE;
 
 $route['cashier/(:num)']    = 'cashier/index/$1';
 $route['users/(:num)']      = 'users/index/$1';
+$route['sales/(:num)']      = 'sales/index/$1';

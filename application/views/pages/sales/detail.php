@@ -5,15 +5,14 @@
     <div class="row" id="printStruk">
         <div class="col-md-12">
             <div class="card mb-3">
-                <div class="card-header bg-success text-white">
-                    Pesanan Selesai
+                <div class="card-header bg-primary text-white">
+                    Detail Penjualan
                 </div>
                 <div class="card-body">
-                    <h5>Nomor pesanan: <?= $penjualan->id_penjualan ?></h5>
+                    <h5>Nomor penjualan: <?= $penjualan->id_penjualan ?></h5>
                     <h5>NIP Kasir: <?= $penjualan->id_user ?></h5>
                     <h5>Nama Kasir: <?= $penjualan->nama ?></h5>
                     <h5>Waktu: <?= date('d/m/Y H:i:s', strtotime($penjualan->waktu_penjualan)) ?></h5>
-                    <p>Terima kasih sudah berbelanja 😊</p>
                     <table class="table table-responsive w-100 d-block d-md-table">
                         <thead>
                             <tr>
@@ -45,7 +44,7 @@
                 <div class="card-footer bg-white">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 mb-2">
-                            <a href="<?= base_url('cashier') ?>" class="btn btn-primary btn-rounded text-white"><i class="fas fa-angle-left"></i> Kembali ke kasir</a>
+                            <a href="<?= base_url('sales') ?>" class="btn btn-primary btn-rounded text-white"><i class="fas fa-angle-left"></i> Kembali ke List Penjualan</a>
                         </div>
                         <div class="col-md-6 col-sm-12 mb-2">
                             <button class="btn btn-success btn-rounded float-right" onclick="printDiv('printStruk')">Cetak Struk <i class="fas fa-angle-right"></i></button>

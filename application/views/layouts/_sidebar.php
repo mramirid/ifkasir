@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('sales') ?>" aria-expanded="false">
                         <i data-feather="list" class="feather-icon"></i>
                         <span class="hide-menu">List Penjualan</span>
                     </a>

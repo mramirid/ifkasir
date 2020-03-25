@@ -73,6 +73,18 @@
                             </form>
                         </a>
                     </li>
+                <!-- Menu List Penjualan menampilkan search box -->
+                <?php elseif ($this->uri->segment(1) == 'sales') : ?>
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link">
+                            <form action="<?= base_url('sales/search') ?>" method="POST">
+                                <div class="customize-input">
+                                    <input name="keyword" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Search" aria-label="Search" value="<?= $this->session->userdata('keyword') ?>">
+                                    <i class="form-control-icon" data-feather="search"></i>
+                                </div>
+                            </form>
+                        </a>
+                    </li>
                 <!-- Menu List Karyawan menampilkan search box -->
                 <?php elseif ($this->uri->segment(1) == 'users') : ?>
                     <li class="nav-item d-none d-md-block">

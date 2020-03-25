@@ -73,10 +73,12 @@ class MY_Model extends CI_Model
     public function join($table, $stringAction = '', $type = 'left')
     {
         if ($stringAction == $this->ACTION_TRIM_JOIN) {
+            // Karena $table.id_ saja kurang maka perlu ditambahi nama tabel hasil dari trim
             $primaryKey = explode('_', $table)[1];
             $this->db->join($table, "$this->table.id_$primaryKey = $table.id_$primaryKey", $type);
             return $this;
         } else if ($stringAction == $this->ACTION_ADD_JOIN) {
+            // Karena $table.id_ saja kurang maka perlu ditambahi nama tabel yang didapatkan dari nama tabel join
             $this->db->join($table, "$this->table.id_$table = $table.id_$table", $type);
             return $this;
         } 

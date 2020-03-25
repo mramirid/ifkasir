@@ -53,6 +53,7 @@ class Users extends MY_Controller
                                         ->like('nama', $keyword)
                                         ->orLike('ktp', $keyword)
                                         ->orLike('email', $keyword)
+                                        ->paginate($page)
                                         ->get();
         $data['total_rows']         = $this->users->like('nama', $keyword)
                                         ->orLike('ktp', $keyword)

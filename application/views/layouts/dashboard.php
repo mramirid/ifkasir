@@ -65,7 +65,15 @@
                     </div>
                     <div class="col-5 align-self-center">
                         <div class="float-right">
-                            <button type="button" class="btn btn-primary btn-rounded"><i class="fas fa-calendar"></i> &nbsp;<?= date('d/m/y') ?></button>
+                            <?php if ($this->uri->segment(1) == 'sales') : ?>
+                                <form action="<?= base_url('sales/search_time') ?>" method="POST">
+                                    <div class="customize-input">
+                                        <input name="time" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Filter Tanggal" aria-label="Search" value="<?= $this->session->userdata('time') ?>">
+                                    </div>
+                                </form>
+                            <?php else : ?>
+                                <button type="button" class="btn btn-primary btn-rounded"><i class="fas fa-calendar"></i> &nbsp;<?= date('d/m/y') ?></button>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
