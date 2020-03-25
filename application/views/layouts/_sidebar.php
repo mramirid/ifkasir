@@ -90,9 +90,9 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('about') ?>" aria-expanded="false">
                         <i data-feather="info" class="feather-icon"></i>
-                        <span class="hide-menu">About</span>
+                        <span class="hide-menu">About us</span>
                     </a>
                 </li>
             </ul>
