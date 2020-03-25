@@ -38,6 +38,7 @@
                                                     <button type="submit" class="btn btn-info"><i class="fas fa-check"></i></button>
                                                 </div>
                                             </div>
+                                            <small class="text-danger mt-1"><?= $this->session->flashdata("qty_pesanan_$row->id_pesanan") ?></small>
                                         </form>
                                     </td>
                                     <td class="text-center">Rp.<?= number_format($row->subtotal_pesanan, 0, ',', '.') ?>,-</td>
@@ -69,7 +70,7 @@
                             </form>
                         </div>
                         <div class="col-md-4 col-sm-12 mb-2">
-                            <a href="<?= base_url('checkout') ?>" class="btn btn-success btn-rounded float-right">Pembayaran <i class="fas fa-angle-right"></i></a>
+                            <a href="<?= base_url('cart/checkout') ?>" class="btn btn-success btn-rounded float-right">Pembayaran <i class="fas fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
