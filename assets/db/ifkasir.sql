@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2020 at 08:49 PM
+-- Generation Time: Mar 25, 2020 at 07:06 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -95,11 +95,29 @@ CREATE TABLE `detail_penjualan` (
 --
 
 INSERT INTO `detail_penjualan` (`id_detail_penjualan`, `id_penjualan`, `id_barang`, `qty_jual`, `subtotal_jual`) VALUES
-(2, 1, 3, 34, 170000),
-(3, 1, 4, 3, 15000),
-(4, 2, 4, 2, 10000),
-(5, 2, 2, 1, 3000),
-(7, 3, 4, 6, 30000);
+(12, 18, 2, 1, 3000),
+(13, 18, 3, 4, 20000),
+(14, 20, 2, 3, 9000),
+(15, 20, 3, 5, 25000),
+(16, 21, 4, 3, 15000),
+(17, 21, 3, 4, 20000),
+(18, 22, 2, 1, 3000),
+(19, 22, 3, 4, 20000),
+(20, 23, 3, 3, 15000),
+(21, 24, 3, 1, 5000),
+(22, 25, 4, 4, 20000),
+(23, 25, 5, 2, 10000),
+(24, 26, 3, 2, 10000),
+(25, 27, 3, 2, 10000),
+(26, 28, 3, 3, 15000),
+(27, 29, 3, 3, 15000),
+(28, 30, 3, 2, 10000),
+(29, 30, 4, 1, 5000),
+(30, 43, 3, 2, 10000),
+(31, 43, 4, 3, 15000),
+(32, 44, 3, 4, 20000),
+(33, 46, 3, 1, 5000),
+(34, 49, 3, 2, 10000);
 
 --
 -- Triggers `detail_penjualan`
@@ -135,17 +153,11 @@ DELIMITER ;
 
 CREATE TABLE `keranjang` (
   `id_pesanan` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `qty_pesanan` int(11) NOT NULL,
   `subtotal_pesanan` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id_pesanan`, `id_barang`, `qty_pesanan`, `subtotal_pesanan`) VALUES
-(1, 4, 5, 25000);
 
 --
 -- Triggers `keranjang`
@@ -215,9 +227,22 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `waktu_penjualan`, `total_harga`) VALUES
-(1, 1, '2020-03-22 22:20:30', 185000),
-(2, 2, '2020-03-22 23:03:07', 33000),
-(3, 2, '2020-03-23 03:11:08', 30000);
+(18, 6, '2020-03-25 12:35:25', 23000),
+(20, 7, '2020-03-25 12:58:07', 34000),
+(21, 7, '2020-03-25 13:00:18', 35000),
+(22, 6, '2020-03-25 13:01:10', 23000),
+(23, 6, '2020-03-25 13:16:37', 15000),
+(24, 6, '2020-03-25 13:17:36', 5000),
+(25, 6, '2020-03-25 13:18:36', 30000),
+(26, 6, '2020-03-25 13:21:00', 10000),
+(27, 6, '2020-03-25 13:22:07', 10000),
+(28, 6, '2020-03-25 13:23:30', 15000),
+(29, 6, '2020-03-25 13:29:25', 15000),
+(30, 7, '2020-03-25 13:31:17', 15000),
+(43, 7, '2020-03-25 13:52:32', 25000),
+(44, 7, '2020-03-25 13:55:01', 20000),
+(46, 7, '2020-03-25 14:01:50', 5000),
+(49, 7, '2020-03-25 14:03:38', 10000);
 
 -- --------------------------------------------------------
 
@@ -238,10 +263,10 @@ CREATE TABLE `stock_barang` (
 --
 
 INSERT INTO `stock_barang` (`id_barang`, `tipe_barang`, `nama_barang`, `qty_inventory`, `harga_jual`) VALUES
-(2, 'minuman', 'Teh Sariwangi', 11, 3000),
-(3, 'makanan', 'Indomie Goreng', 66, 5000),
-(4, 'makanan', 'Indomie Kare Spesial', 49, 5000),
-(5, 'minuman', 'Good Day Freeze', 3, 5000),
+(2, 'minuman', 'Teh Sariwangi', 0, 3000),
+(3, 'makanan', 'Indomie Goreng', 22, 5000),
+(4, 'makanan', 'Indomie Kare Spesial', 38, 5000),
+(5, 'minuman', 'Good Day Freeze', 1, 5000),
 (6, 'minuman', 'Extra Joss', 0, 4000);
 
 -- --------------------------------------------------------
@@ -266,8 +291,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `telefon`, `ktp`, `role`, `status`) VALUES
-(6, 'Admin', 'admin@admin.com', '$2y$10$57RqOUmcjWrpBBYf9cl0b.1SNkSTZ6L/nKfkAmS1jlh0DxihWnYNW', '911', '17081010000', 'admin', 'aktif'),
-(7, 'Kasir', 'kasir@kasir.com', '$2y$10$1J20ZAuHiIiQgb8b6OYAye7AhPN35Fpx.6/Wb/2W1PYsRnxDERIbC', '911', '17081010001', 'kasir', 'aktif');
+(6, 'Administrator', 'admin@admin.com', '$2y$10$VxFzBtDgQviH9q/IqS3dS.TpaW6sxT31vjJdqE4oLgtyQFuQQvBSq', '911', '17081010000', 'admin', 'aktif'),
+(7, 'Kasir', 'kasir@kasir.com', '$2y$10$pZ28jFXoSs3V9bYYp0SmwuW19EmUvAcQjEezYnurYA2GxNVQg7YkO', '087855777360', '17081010054', 'kasir', 'aktif'),
+(8, 'Alfath Daryl Alhajir', 'kasir2@kasir.com', '$2y$10$L85.qX10Ktnc1gfkaHUL8OcXC4j.CIZDnKwBdDLeMN7xTaS.dXOBW', '087855777360', '17081010055', 'kasir', 'non-aktif'),
+(10, 'Kasir Keempat', 'kasir4@kasir.com', '$2y$10$g/bU7dk/BVTYiF1WKVEJ.eQZSHvQRbNoh0Ht8jrT06kdDfAYpNkcW', '447773', '17081010051', 'kasir', 'non-aktif'),
+(11, 'Kasir Kelima', 'kasir5@kasir.com', '$2y$10$rDB6KRsFFAowt0GvxEIfgOfTW80NKc1gJm2qbUQs5QW7IbPMrctXG', '12449939', '17081010093', 'kasir', 'aktif'),
+(12, 'Kasir Keenam', 'kasir6@kasir.com', '$2y$10$TtlU9R8xyawAHcDIe2kpf.dC1PU2Y/pLPmbvOD81XhPkpWlu9G6na', '888449333', '17081010044', 'kasir', 'aktif'),
+(14, 'Kasir Ketujuh', 'kasir7@kasir.com', '$2y$10$4.eIdY57ZXwgKCniQzx2FO493OupNt47T3QPLB33fX7mlUP9alwHO', '288874747', '12777363633', 'kasir', 'aktif');
 
 --
 -- Indexes for dumped tables
@@ -343,13 +373,13 @@ ALTER TABLE `detail_pembelian`
 -- AUTO_INCREMENT for table `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `keuntungan`
@@ -367,7 +397,7 @@ ALTER TABLE `pembelian`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `stock_barang`
@@ -379,7 +409,7 @@ ALTER TABLE `stock_barang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
