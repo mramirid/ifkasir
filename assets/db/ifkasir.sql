@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2020 at 08:14 AM
+-- Generation Time: Mar 26, 2020 at 12:17 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -44,7 +44,13 @@ INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_baran
 (3, 3, 3, 100, 500000),
 (4, 4, 4, 60, 180000),
 (8, 3, 2, 10, 30000),
-(9, 5, 5, 3, 15000);
+(9, 5, 5, 3, 15000),
+(10, 6, 2, 56, 168000),
+(11, 6, 3, 70, 350000),
+(12, 7, 5, 83, 415000),
+(13, 7, 6, 150, 600000),
+(14, 8, 7, 53, 265000),
+(15, 8, 8, 89, 623000);
 
 --
 -- Triggers `detail_pembelian`
@@ -213,7 +219,10 @@ CREATE TABLE `pembelian` (
 INSERT INTO `pembelian` (`id_pembelian`, `id_user`, `waktu_pembelian`, `total_harga`) VALUES
 (3, 2, '2020-03-22 22:11:22', 45000),
 (4, 2, '2020-03-22 22:16:17', 180000),
-(5, 1, '2020-03-23 03:03:08', 15000);
+(5, 1, '2020-03-23 03:03:08', 15000),
+(6, 11, '2020-03-26 19:09:42', 518000),
+(7, 12, '2020-03-26 19:09:54', 1015000),
+(8, 14, '2020-03-26 19:09:54', 888000);
 
 -- --------------------------------------------------------
 
@@ -272,11 +281,13 @@ CREATE TABLE `stock_barang` (
 --
 
 INSERT INTO `stock_barang` (`id_barang`, `tipe_barang`, `nama_barang`, `qty_inventory`, `harga_jual`) VALUES
-(2, 'minuman', 'Teh Sariwangi', 0, 3000),
-(3, 'makanan', 'Indomie Goreng', 5, 5000),
+(2, 'minuman', 'Teh Sariwangi', 56, 3000),
+(3, 'makanan', 'Indomie Goreng', 75, 5000),
 (4, 'makanan', 'Indomie Kare Spesial', 24, 5000),
-(5, 'minuman', 'Good Day Freeze', 1, 5000),
-(6, 'minuman', 'Extra Joss', 0, 4000);
+(5, 'minuman', 'Good Day Freeze', 84, 5000),
+(6, 'minuman', 'Extra Joss', 150, 4000),
+(7, 'minuman', 'Beng Beng', 53, 5000),
+(8, 'minuman', 'Hilo Milk', 89, 7000);
 
 -- --------------------------------------------------------
 
@@ -376,7 +387,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `detail_penjualan`
@@ -388,7 +399,7 @@ ALTER TABLE `detail_penjualan`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `keuntungan`
@@ -400,7 +411,7 @@ ALTER TABLE `keuntungan`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
@@ -412,7 +423,7 @@ ALTER TABLE `penjualan`
 -- AUTO_INCREMENT for table `stock_barang`
 --
 ALTER TABLE `stock_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
