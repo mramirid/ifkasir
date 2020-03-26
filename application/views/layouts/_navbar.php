@@ -115,9 +115,6 @@
                         <a class="dropdown-item" href="<?= base_url("user") ?>">
                             <i data-feather="user" class="svg-icon mr-2 ml-1"></i>My Profile
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i data-feather="credit-card" class="svg-icon mr-2 ml-1"></i>My Balance
-                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= base_url("user/edit/" . $this->session->userdata('id_user')) ?>">
                             <i data-feather="settings" class="svg-icon mr-2 ml-1"></i>Account Setting

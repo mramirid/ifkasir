@@ -42,52 +42,25 @@ function getCountMenu()
 }
 
 /**
- * Fungsi untuk memuat data dengan format option (Drowdown)
- * Param table   : table mana yang akan dimuat
- * Param columns : berupa key column apa saja yang diambil
+ * Fungsi ini mengembalikan banyak barang dan total penjualan berdasarkan
+ * tipe barang (makanan/minuman) dari tabel detail_penjualan
  */
-function getDropdownList($table, $columns)
-{
-    $CI =& get_instance();  // Memanggil core system dari CI, agar kita dapat memanggil class2 dari CI
-    $query = $CI->db->select($columns)->from($table)->get();
-
-    if ($query->num_rows() >= 1) {
-        // '' sebagai value dari option select & select akan muncul di browser
-        $option1 = ['' => '- Select -'];
-        $option2 = array_column($query->result_array(), $columns[1], $columns[0]);   // Param 2 & 3 adalah key
-        $options = $option1 + $option2;
-
-        return $options;
-    }
-
-    return $options = ['' => '- Select -'];
-}
-
-/**
- * Untuk meload kategori dari table kategori
- */
-function getCategories()
+function getSalesInfoByType($type)
 {
     $CI =& get_instance();
-    $query = $CI->db->get('category')->result();
-    return $query;
+    $CI->db->select('
+        COUNT(detail_penjualan.qty_jual) AS banyak, 
+        SUM(detail_penjualan.subtotal_jual) as total
+    ');
+    $CI->db->from('detail_penjualan');
+    $CI->db->join('stock_barang', 'detail_penjualan.id_barang = stock_barang.id_barang');
+    $CI->db->where('stock_barang.tipe_barang', $type);
+    return $CI->db->get()->row();
 }
 
-/**
- * Menghitung jumlah cart (pada navbar) sesuai dengan id user yang login
- */
-function getCart()
+function getTotalSalesByMonth(Type $var = null)
 {
-    $CI =& get_instance();
-    $userId = $CI->session->userdata('id');
-
-    if ($userId) {
-        // Hitung banyak cart suatu user
-        $query = $CI->db->where('id_user', $userId)->count_all_results('cart');
-        return $query;
-    }
-
-    return false;
+    
 }
 
 /**

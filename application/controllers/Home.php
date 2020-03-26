@@ -43,7 +43,31 @@ class Home extends MY_Controller
         $this->home->table  = 'user';
         $data['users']      = $this->home->limit(5)->get();
 
-        // print_r(getTodayCountSales()); exit;
+        // Mendapatkan total harga dari penjualan seminggu terakhir
+        $this->home->table  = 'penjualan';
+        $data['list_penjualan_seminggu'] = $this->home->select([
+                'DAY(penjualan.waktu_penjualan) AS tanggal',
+                'SUM(penjualan.total_harga) AS total'
+            ])
+            ->groupBy('DAY(penjualan.waktu_penjualan)')
+            ->orderBy('DAY(penjualan.waktu_penjualan)')
+            ->limit(7)
+            ->get();
+
+        // Pasang default value jika kosong (Warning)
+        for ($i = 0; $i < 7; ++$i) {
+            if (!isset($data['list_penjualan_seminggu'][$i])) {
+                $data['list_penjualan_seminggu'][$i] = new StdClass;    // Jika row tidak ada, buat row baru
+                $data['list_penjualan_seminggu'][$i]->tanggal = 0;
+                $data['list_penjualan_seminggu'][$i]->total   = 0;
+            }
+        }
+
+        // print_r($data['list_penjualan_seminggu']); exit;
+
+        // Mendapatkan banyak dan total harga dari masing2 makanan & minuman yang terjual
+        // $data['info_makanan'] = getSalesInfoByType('makanan');
+        // $data['info_minuman'] = getSalesInfoByType('minuman');
 
         $this->view($data);
     }

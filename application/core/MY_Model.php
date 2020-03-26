@@ -101,6 +101,12 @@ class MY_Model extends CI_Model
         return $this;
     }
 
+    public function groupBy($type)
+    {
+        $this->db->group_by($type);
+        return $this;
+    }
+
     /* ------ Methods output ------ */
 
     public function first()
