@@ -7,6 +7,9 @@ class MY_Model extends CI_Model
     protected $table = '';
     protected $perPage = 5; // Banyak data tiap halaman
 
+    public $ACTION_TRIM_JOIN = 1;
+    public $ACTION_ADD_JOIN  = 2;
+
     public function __construct()
     {
         parent::__construct();
@@ -67,8 +70,25 @@ class MY_Model extends CI_Model
         return $this;
     }
 
-    public function join($table, $type = 'left')
+    public function limit($value)
     {
+        $this->db->limit($value);
+        return $this;
+    }
+
+    public function join($table, $stringAction = '', $type = 'left')
+    {
+        if ($stringAction == $this->ACTION_TRIM_JOIN) {
+            // Karena $table.id_ saja kurang maka perlu ditambahi nama tabel hasil dari trim
+            $primaryKey = explode('_', $table)[1];
+            $this->db->join($table, "$this->table.id_$primaryKey = $table.id_$primaryKey", $type);
+            return $this;
+        } else if ($stringAction == $this->ACTION_ADD_JOIN) {
+            // Karena $table.id_ saja kurang maka perlu ditambahi nama tabel yang didapatkan dari nama tabel join
+            $this->db->join($table, "$this->table.id_$table = $table.id_$table", $type);
+            return $this;
+        } 
+
         // Param 1: table yang ingin digabungkan
         // Param 2 misal: mencari produk berdasarkan kategori --> "product.id_category = category.id"
         $this->db->join($table, "$this->table.id_$table = $table.id", $type);
@@ -78,6 +98,12 @@ class MY_Model extends CI_Model
     public function orderBy($column, $order = 'asc')
     {
         $this->db->order_by($column, $order);
+        return $this;
+    }
+
+    public function groupBy($type)
+    {
+        $this->db->group_by($type);
         return $this;
     }
 
@@ -117,6 +143,11 @@ class MY_Model extends CI_Model
     {
         $this->db->delete($this->table);
         return $this->db->affected_rows();
+    }
+
+    public function resetIndex()
+    {
+        $this->db->query("ALTER TABLE $this->table AUTO_INCREMENT = 1");
     }
 
     public function paginate($page)
