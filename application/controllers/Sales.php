@@ -33,6 +33,7 @@ class Sales extends MY_Controller
                 'penjualan.waktu_penjualan', 'penjualan.total_harga'
             ])
             ->join('user', $this->sales->ACTION_ADD_JOIN)
+            ->orderBy('penjualan.waktu_penjualan', 'DESC')
             ->paginate($page)
             ->get();
         $data['total_rows'] = $this->sales->count();
@@ -104,11 +105,11 @@ class Sales extends MY_Controller
                 'penjualan.waktu_penjualan', 'penjualan.total_harga'
             ])
             ->join('user', $this->sales->ACTION_ADD_JOIN)
-            ->like('penjualan.waktu_penjualan', strtotime($time))
+            ->like('DATE(penjualan.waktu_penjualan)', date('Y-m-d', strtotime($time)))
             ->paginate($page)
             ->get();
         $data['total_rows'] = $this->sales->join('user', $this->sales->ACTION_ADD_JOIN)
-            ->like('penjualan.waktu_penjualan', strtotime($time))
+            ->like('DATE(penjualan.waktu_penjualan)', date('Y-m-d', strtotime($time)))
             ->count();
         $data['pagination'] = $this->sales->makePagination(base_url('sales/search_time'), 3, $data['total_rows']);
         $data['page']       = 'pages/sales/index';

@@ -65,10 +65,11 @@
                     </div>
                     <div class="col-5 align-self-center">
                         <div class="float-right">
+                            <!-- Mengganti button tanggal menjadi search tanggal di halaman list penjualan -->
                             <?php if ($this->uri->segment(1) == 'sales') : ?>
                                 <form action="<?= base_url('sales/search_time') ?>" method="POST">
                                     <div class="customize-input">
-                                        <input name="time" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="Filter Tanggal" aria-label="Search" value="<?= $this->session->userdata('time') ?>">
+                                        <input name="time" class="form-control custom-shadow custom-radius border-0 bg-white" type="search" placeholder="DD-MM-YYYY" aria-label="Search" value="<?= $this->session->userdata('time') ?>">
                                     </div>
                                 </form>
                             <?php else : ?>

@@ -70,6 +70,12 @@ class MY_Model extends CI_Model
         return $this;
     }
 
+    public function limit($value)
+    {
+        $this->db->limit($value);
+        return $this;
+    }
+
     public function join($table, $stringAction = '', $type = 'left')
     {
         if ($stringAction == $this->ACTION_TRIM_JOIN) {

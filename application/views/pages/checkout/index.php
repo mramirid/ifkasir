@@ -9,10 +9,28 @@
                     Pesanan Selesai
                 </div>
                 <div class="card-body">
-                    <h5>Nomor pesanan: <?= $penjualan->id_penjualan ?></h5>
-                    <h5>NIP Kasir: <?= $penjualan->id_user ?></h5>
-                    <h5>Nama Kasir: <?= $penjualan->nama ?></h5>
-                    <h5>Waktu: <?= date('d/m/Y H:i:s', strtotime($penjualan->waktu_penjualan)) ?></h5>
+                    <table class="table-responsive mb-3 no-wrap">
+                        <tr>
+                            <td>Nomor penjualan</td>
+                            <td>:</td>
+                            <td><?= $penjualan->id_penjualan ?></td>
+                        </tr>
+                        <tr>
+                            <td>NIP Kasir</td>
+                            <td>:</td>
+                            <td><?= $penjualan->id_user ?></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Kasir</td>
+                            <td>:</td>
+                            <td><?= $penjualan->nama ?></td>
+                        </tr>
+                        <tr>
+                            <td>Waktu</td>
+                            <td>:</td>
+                            <td><?= date('d/m/Y H:i:s', strtotime($penjualan->waktu_penjualan)) ?></td>
+                        </tr>
+                    </table>
                     <p>Terima kasih sudah berbelanja 😊</p>
                     <table class="table table-responsive w-100 d-block d-md-table">
                         <thead>

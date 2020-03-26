@@ -11,13 +11,12 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-                            <span class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                            <h2 class="text-dark mb-1 font-weight-medium"><?= getJumlahKaryawan() ?> Orang</h2>
                         </div>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Clients</h6>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Karyawan</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="users"></i></span>
                     </div>
                 </div>
             </div>
@@ -26,9 +25,9 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                class="set-doller">$</sup>18,306</h2>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of Month
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            <sup class="set-doller overflow-auto">Rp.</sup><?= number_format(getTodayEarning(), 0, ',', '.') ?></h2>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pendapatan hari ini
                         </h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
@@ -42,14 +41,12 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                            <span
-                                class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                            <h2 class="text-dark mb-1 font-weight-medium"><?= getTodayCountSales() ?></h2>
                         </div>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Penjualan hari ini</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="shopping-cart"></i></span>
                     </div>
                 </div>
             </div>
@@ -58,11 +55,11 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
+                        <h2 class="text-dark mb-1 font-weight-medium"><?= getCountMenu() ?></h2>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Menu</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="box"></i></span>
                     </div>
                 </div>
             </div>
@@ -148,250 +145,117 @@
                 </div>
             </div>
         </div>
+        <!-- Start Aktivitas Penjualan -->
         <div class="col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Recent Activity</h4>
+                    <h4 class="card-title">Aktivitas Penjualan</h4>
                     <div class="mt-4 activity">
-                        <div class="d-flex align-items-start border-left-line pb-3">
-                            <div>
-                                <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                    <i data-feather="shopping-cart"></i>
-                                </a>
+                        <?php foreach ($list_penjualan as $row) : ?>
+                            <div class="d-flex align-items-start border-left-line pb-3">
+                                <div>
+                                    <a href="<?= base_url("sales/detail/$row->id_penjualan") ?>" class="btn btn-info btn-circle mb-2 btn-item">
+                                        <i data-feather="shopping-cart"></i>
+                                    </a>
+                                </div>
+                                <div class="ml-3 mt-2">
+                                    <h5 class="text-dark font-weight-medium mb-2">Penjualan Nomor <?= $row->id_penjualan ?></h5>
+                                    <p class="font-14 mb-2 text-muted">
+                                        Dilayani oleh <?= $row->nama ?> 
+                                        <br>
+                                        Rp.<?= number_format($row->total_harga, 0, ',', '.') ?>,-
+                                    </p>
+                                    <span class="font-weight-light font-14 text-muted"><?= $row->waktu_penjualan ?></span>
+                                </div>
                             </div>
-                            <div class="ml-3 mt-2">
-                                <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                    Camera.
-                                </p>
-                                <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start border-left-line pb-3">
-                            <div>
-                                <a href="javascript:void(0)"
-                                    class="btn btn-danger btn-circle mb-2 btn-item">
-                                    <i data-feather="message-square"></i>
-                                </a>
-                            </div>
-                            <div class="ml-3 mt-2">
-                                <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                    ticket</p>
-                                <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-start border-left-line">
-                            <div>
-                                <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                    <i data-feather="bell"></i>
-                                </a>
-                            </div>
-                            <div class="ml-3 mt-2">
-                                <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
-                                </h5>
-                                <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
-                                <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
-                                    Ago</span>
-                                <a href="javascript:void(0)"
-                                    class="font-14 border-bottom pb-1 border-info">Load More</a>
-                            </div>
-                        </div>
+                        <?php endforeach ?>
+                        <a href="<?= base_url('sales') ?>" class="font-14 border-bottom pb-1 border-info">Load More</a>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- End Aktivitas Penjualan -->
     </div>
     <!-- *************************************************************** -->
     <!-- End Location and Earnings Charts Section -->
     <!-- *************************************************************** -->
     <!-- *************************************************************** -->
-    <!-- Start Top Leader Table -->
+    <!-- Start List Users -->
     <!-- *************************************************************** -->
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="d-flex align-items-center mb-4">
-                        <h4 class="card-title">Top Leaders</h4>
-                        <div class="ml-auto">
-                            <div class="dropdown sub-dropdown">
-                                <button class="btn btn-link text-muted dropdown-toggle" type="button"
-                                    id="dd1" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <i data-feather="more-vertical"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd1">
-                                    <a class="dropdown-item" href="#">Insert</a>
-                                    <a class="dropdown-item" href="#">Update</a>
-                                    <a class="dropdown-item" href="#">Delete</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="d-flex align-items-center">
+                        <h4 class="card-title">Daftar Karyawan</h4>
                     </div>
                     <div class="table-responsive">
                         <table class="table no-wrap v-middle mb-0">
                             <thead>
                                 <tr class="border-0">
-                                    <th class="border-0 font-14 font-weight-medium text-muted">Team Lead
-                                    </th>
-                                    <th class="border-0 font-14 font-weight-medium text-muted px-2">Project
-                                    </th>
-                                    <th class="border-0 font-14 font-weight-medium text-muted">Team</th>
-                                    <th class="border-0 font-14 font-weight-medium text-muted text-center">
-                                        Status
-                                    </th>
-                                    <th class="border-0 font-14 font-weight-medium text-muted text-center">
-                                        Weeks
-                                    </th>
-                                    <th class="border-0 font-14 font-weight-medium text-muted">Budget</th>
+                                    <th class="border-0 font-14 font-weight-medium text-muted px-2">Nama</th>
+                                    <th class="border-0 font-14 font-weight-medium text-muted px-2">Email</th>
+                                    <!-- Hanya admin yang boleh liat KTP -->
+                                    <?php if ($this->session->userdata('role') == 'admin') : ?>
+                                        <th class="border-0 font-14 font-weight-medium text-muted px-2">KTP</th>
+                                    <?php endif ?>
+                                    <th class="border-0 font-14 font-weight-medium text-muted">Role</th>
+                                    <th class="border-0 font-14 font-weight-medium text-muted text-center">Status</th>
+                                    <th class="border-0 font-14 font-weight-medium text-muted text-center">Telefon</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="border-top-0 px-2 py-4">
-                                        <div class="d-flex no-block align-items-center">
-                                            <div class="mr-3"><img
-                                                    src="<?= base_url('assets/images/users/widget-table-pic1.jpg') ?>"
-                                                    alt="user" class="rounded-circle" width="45"
-                                                    height="45" /></div>
-                                            <div class="">
-                                                <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna
-                                                    Gover</h5>
-                                                <span class="text-muted font-14">hgover@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="border-top-0 text-muted px-2 py-4 font-14">Elite Admin</td>
-                                    <td class="border-top-0 px-2 py-4">
-                                        <div class="popover-icon">
-                                            <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                href="javascript:void(0)">DS</a>
-                                            <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                href="javascript:void(0)">SS</a>
-                                            <a class="btn btn-cyan rounded-circle btn-circle font-12 popover-item"
-                                                href="javascript:void(0)">RP</a>
-                                            <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                href="javascript:void(0)">+</a>
-                                        </div>
-                                    </td>
-                                    <td class="border-top-0 text-center px-2 py-4"><i
-                                            class="fa fa-circle text-primary font-12" data-toggle="tooltip"
-                                            data-placement="top" title="In Testing"></i></td>
-                                    <td
-                                        class="border-top-0 text-center font-weight-medium text-muted px-2 py-4">
-                                        35
-                                    </td>
-                                    <td class="font-weight-medium text-dark border-top-0 px-2 py-4">$96K
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="px-2 py-4">
-                                        <div class="d-flex no-block align-items-center">
-                                            <div class="mr-3"><img
-                                                    src="<?= base_url('assets/images/users/widget-table-pic2.jpg') ?>"
-                                                    alt="user" class="rounded-circle" width="45"
-                                                    height="45" /></div>
-                                            <div class="">
-                                                <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
-                                                    Kristeen
-                                                </h5>
-                                                <span class="text-muted font-14">Kristeen@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted px-2 py-4 font-14">Real Homes WP Theme</td>
-                                    <td class="px-2 py-4">
-                                        <div class="popover-icon">
-                                            <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                href="javascript:void(0)">DS</a>
-                                            <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                href="javascript:void(0)">SS</a>
-                                            <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                href="javascript:void(0)">+</a>
-                                        </div>
-                                    </td>
-                                    <td class="text-center px-2 py-4"><i
-                                            class="fa fa-circle text-success font-12" data-toggle="tooltip"
-                                            data-placement="top" title="Done"></i>
-                                    </td>
-                                    <td class="text-center text-muted font-weight-medium px-2 py-4">32</td>
-                                    <td class="font-weight-medium text-dark px-2 py-4">$85K</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-2 py-4">
-                                        <div class="d-flex no-block align-items-center">
-                                            <div class="mr-3"><img
-                                                    src="<?= base_url('assets/images/users/widget-table-pic3.jpg') ?>"
-                                                    alt="user" class="rounded-circle" width="45"
-                                                    height="45" /></div>
-                                            <div class="">
-                                                <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                    Josephs
-                                                </h5>
-                                                <span class="text-muted font-14">Josephs@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted px-2 py-4 font-14">MedicalPro WP Theme</td>
-                                    <td class="px-2 py-4">
-                                        <div class="popover-icon">
-                                            <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                href="javascript:void(0)">DS</a>
-                                            <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                href="javascript:void(0)">SS</a>
-                                            <a class="btn btn-cyan rounded-circle btn-circle font-12 popover-item"
-                                                href="javascript:void(0)">RP</a>
-                                            <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                href="javascript:void(0)">+</a>
-                                        </div>
-                                    </td>
-                                    <td class="text-center px-2 py-4"><i
-                                            class="fa fa-circle text-primary font-12" data-toggle="tooltip"
-                                            data-placement="top" title="Done"></i>
-                                    </td>
-                                    <td class="text-center text-muted font-weight-medium px-2 py-4">29</td>
-                                    <td class="font-weight-medium text-dark px-2 py-4">$81K</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-2 py-4">
-                                        <div class="d-flex no-block align-items-center">
-                                            <div class="mr-3"><img
-                                                    src="<?= base_url('assets/images/users/widget-table-pic4.jpg') ?>"
-                                                    alt="user" class="rounded-circle" width="45"
-                                                    height="45" /></div>
-                                            <div class="">
-                                                <h5 class="text-dark mb-0 font-16 font-weight-medium">Jan
-                                                    Petrovic
-                                                </h5>
-                                                <span class="text-muted font-14">hgover@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-muted px-2 py-4 font-14">Hosting Press HTML</td>
-                                    <td class="px-2 py-4">
-                                        <div class="popover-icon">
-                                            <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                href="javascript:void(0)">DS</a>
-                                            <a class="btn btn-success text-white font-20 rounded-circle btn-circle"
-                                                href="javascript:void(0)">+</a>
-                                        </div>
-                                    </td>
-                                    <td class="text-center px-2 py-4"><i
-                                            class="fa fa-circle text-danger font-12" data-toggle="tooltip"
-                                            data-placement="top" title="In Progress"></i></td>
-                                    <td class="text-center text-muted font-weight-medium px-2 py-4">23</td>
-                                    <td class="font-weight-medium text-dark px-2 py-4">$80K</td>
-                                </tr>
+                                <?php foreach ($users as $row) : ?>
+                                    <tr>
+                                        <td class="border-top-0 px-2 py-4"><?= $row->nama ?></td>
+                                        <td class="border-top-0 text-muted px-2 py-4 font-14"><?= $row->email ?></td>
+                                        <!-- Hanya admin yang boleh liat KTP -->
+                                        <?php if ($this->session->userdata('role') == 'admin') : ?>
+                                            <td class="border-top-0 text-muted px-2 py-4 font-14"><?= $row->ktp ?></td>
+                                        <?php endif ?>
+                                        <td class="border-top-0 px-2 py-4">
+                                            <?php if ($row->role == 'admin') : ?>
+                                                <div class="popover-icon">
+                                                    <!-- Admin juga sebagai kasir -->
+                                                    <button class="btn btn-primary rounded-circle btn-circle font-12" data-toggle="tooltip" data-placement="top" title="Administrator">ADM</button>
+
+                                                    <button class="btn btn-cyan rounded-circle btn-circle font-12 popover-item" data-toggle="tooltip" data-placement="top" title="Kasir">KSR</button>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="popover-icon">
+                                                    <!-- Elemen bantu -->
+                                                    <button class="btn btn-white rounded-circle btn-circle font-12"></button>
+
+                                                    <button class="btn btn-cyan rounded-circle btn-circle font-12 popover-item" data-toggle="tooltip" data-placement="top" title="Kasir">KSR</button>
+                                                </div>
+                                            <?php endif ?>
+                                        </td>
+                                        <td class="border-top-0 text-center px-2 py-4">
+                                            <?php if ($row->status == 'aktif') : ?>
+                                                <i class="fa fa-circle text-success font-12" data-toggle="tooltip" data-placement="top" title="Akun Aktif"></i>
+                                            <?php else : ?>
+                                                <i class="fa fa-circle text-danger font-12" data-toggle="tooltip" data-placement="top" title="Akun Non-Aktif"></i>
+                                            <?php endif ?>
+                                        </td>
+                                        <td class="border-top-0 text-center text-muted px-2 py-4"><?= $row->telefon ?></td>
+                                    </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="row mb-3">
+                        <div class="col-md-12 col-sm-12 mb-2">
+                            <a href="<?= base_url('users') ?>" class="btn btn-primary btn-rounded text-white float-right">Lihat Daftar Karyawan <i class="fas fa-angle-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- *************************************************************** -->
-    <!-- End Top Leader Table -->
+    <!-- End List Users -->
     <!-- *************************************************************** -->
 </div>
 <!-- ============================================================== -->

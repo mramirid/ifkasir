@@ -1,6 +1,47 @@
 <?php
 
 /**
+ * Mendapatkan jumlah karyawan
+ */
+function getJumlahKaryawan()
+{
+    $CI =& get_instance();
+    return $CI->db->get('user')->num_rows();
+}
+
+/**
+ * Mendapatkan pendapatan bulan ini
+ */
+function getTodayEarning()
+{
+    $CI =& get_instance();
+
+    $CI->db->select_sum('total_harga');
+    $CI->db->where('DATE(waktu_penjualan)', date('Y-m-d'));
+    return $CI->db->get('penjualan')->row()->total_harga;
+}
+
+/**
+ * Mendapatkan banyak penjualan hari ini
+ */
+function getTodayCountSales()
+{
+    $CI =& get_instance();
+
+    $CI->db->where('DATE(waktu_penjualan)', date('Y-m-d'));
+    return $CI->db->get('penjualan')->num_rows();
+}
+
+/**
+ * Mendapatkan banyak menu yang disediakan
+ */
+function getCountMenu()
+{
+    $CI =& get_instance();
+    return $CI->db->get('stock_barang')->num_rows();
+}
+
+/**
  * Fungsi untuk memuat data dengan format option (Drowdown)
  * Param table   : table mana yang akan dimuat
  * Param columns : berupa key column apa saja yang diambil

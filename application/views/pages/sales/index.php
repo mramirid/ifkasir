@@ -28,10 +28,10 @@
                                     <tr>
                                         <td class="border-top-0 px-2 py-4 font-weight-medium"><?= $row->id_penjualan ?></td>
                                         <td class="border-top-0 text-muted px-2 py-4 font-14"><?= $row->nama ?></td>
-                                        <td class="border-top-0 text-muted px-2 py-4 font-14 text-center"><?= date('d/m/Y H:i:s', strtotime($row->waktu_penjualan)) ?></td>
-                                        <td class="border-top-0 text-center text-muted px-2 py-4"><?= $row->total_harga ?></td>
+                                        <td class="border-top-0 text-muted px-2 py-4 font-14 text-center"><?= date('d-m-Y H:i:s', strtotime($row->waktu_penjualan)) ?></td>
+                                        <td class="border-top-0 text-center text-muted px-2 py-4">Rp.<?= number_format($row->total_harga, 0, ',', '.') ?>,-</td>
                                         <td class="border-top-0 text-center text-muted px-2 py-4">
-                                            <a href="<?= base_url("sales/detail/$row->id_penjualan") ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url("sales/detail/$row->id_penjualan") ?>" class="btn btn-primary btn-rounded"><i data-feather="shopping-cart"></i>&nbsp;&nbsp;Detail</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
