@@ -62,13 +62,7 @@ class Home extends MY_Controller
                 $data['list_penjualan_seminggu'][$i]->total   = 0;
             }
         }
-
-        // print_r($data['list_penjualan_seminggu']); exit;
-
-        // Mendapatkan banyak dan total harga dari masing2 makanan & minuman yang terjual
-        // $data['info_makanan'] = getSalesInfoByType('makanan');
-        // $data['info_minuman'] = getSalesInfoByType('minuman');
-
+        
         $this->view($data);
     }
 }
