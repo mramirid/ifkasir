@@ -12,9 +12,9 @@
                 <div class="card-body">
                     <h5 class="d-inline text-dark">Tampilkan berdasarkan&nbsp;&#8594;&nbsp;</h5>
                     <span>
-                        <a href="<?= base_url('cashier') ?>" class="btn btn-rounded btn-dark">Semua</a>
-                        <a href="<?= base_url('cashier/type/makanan') ?>" class="btn btn-rounded btn-primary">Makanan</a>
-                        <a href="<?= base_url('cashier/type/minuman') ?>" class="btn btn-rounded btn-cyan">Minuman</a>
+                        <a href="<?= base_url('cashier') ?>" class="btn btn-rounded btn-dark mt-1 mb-1">Semua</a>
+                        <a href="<?= base_url('cashier/type/makanan') ?>" class="btn btn-rounded btn-primary mt-1 mb-1">Makanan</a>
+                        <a href="<?= base_url('cashier/type/minuman') ?>" class="btn btn-rounded btn-cyan mt-1 mb-1">Minuman</a>
                     </span>
                 </div>
             </div>
