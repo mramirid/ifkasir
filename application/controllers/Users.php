@@ -111,35 +111,6 @@ class Users extends MY_Controller
         redirect(base_url('users'));
     }
 
-    public function delete()
-    {
-        if (!$_POST) {
-            $this->session->set_flashdata('error', 'Akses penghapusan ditolak!');
-            redirect(base_url('users'));
-        }
-
-        $id_user    = $this->input->post('id_user');
-        $user       = $this->users->where('id_user', $id_user)->first();
-
-        if ($user->role == 'admin') {
-            $this->session->set_flashdata('warning', 'Sebagai admin, anda tidak dapat menghapus akun anda sendiri');
-            redirect(base_url('users'));
-        }
-
-        if (!$user) {
-            $this->session->set_flashdata('warning', 'Maaf user tidak ditemukan');
-            redirect(base_url('users'));
-        }
-
-        if ($this->users->where('id_user', $id_user)->delete()) {   // Lakukan penghapusan di db
-            $this->session->set_flashdata('success', 'User berhasil dihapus');
-        } else {
-            $this->session->set_flashdata('error', 'Oops! Terjadi kesalahan');
-        }
-
-        redirect(base_url('users'));
-    }
-
     public function unique_email()
     {
         $email      = $this->input->post('email');

@@ -68,15 +68,9 @@
                                         <!-- Hanya admin yang boleh melakukan aksi pada data -->
                                         <?php if ($this->session->userdata('role') == 'admin') : ?>
                                             <td class="border-top-0 text-center text-muted px-2 py-4">
-                                                <?= form_open(base_url("users/delete"), ['method' => 'POST']) ?>
-                                                    <?= form_hidden('id_user', $row->id_user) ?>
-                                                    <a href="<?= base_url("users/edit/$row->id_user") ?>" class="btn btn-sm">
-                                                        <i class="fas fa-edit text-info"></i>
-                                                    </a>
-                                                    <button type="submit" class="btn btn-sm" onclick="return confirm('Apakah yakin ingin menghapus?')">
-                                                        <i class="fas fa-trash text-danger"></i>
-                                                    </button>
-                                                <?= form_close() ?>
+                                                <a href="<?= base_url("users/edit/$row->id_user") ?>" class="btn btn-sm">
+                                                    <i class="fas fa-edit text-info"></i>
+                                                </a>
                                             </td>
                                         <?php endif ?>
                                     </tr>
