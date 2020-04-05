@@ -16,7 +16,7 @@ function getTodayEarning()
 {
     $CI =& get_instance();
 
-    $CI->db->select_sum('total_harga');
+    $CI->db->select_sum('total_harga', 'total_harga');
     $CI->db->where('DATE(waktu_penjualan)', date('Y-m-d'));
     return $CI->db->get('penjualan')->row()->total_harga;
 }
@@ -56,11 +56,6 @@ function getSalesInfoByType($type)
     $CI->db->join('stock_barang', 'detail_penjualan.id_barang = stock_barang.id_barang');
     $CI->db->where('stock_barang.tipe_barang', $type);
     return $CI->db->get()->row();
-}
-
-function getTotalSalesByMonth(Type $var = null)
-{
-    
 }
 
 /**

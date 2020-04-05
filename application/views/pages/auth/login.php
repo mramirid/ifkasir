@@ -40,7 +40,7 @@
                 <div class="col-lg-5 col-md-7 bg-white">
                     <div class="p-3">
                         <h2 class="mt-3 text-center">Login</h2>
-                        <p class="text-center">Masukan alamat email dan password untuk mengakses panel admin</p>
+                        <p class="text-center">Masukan alamat email dan password untuk mengakses panel utama</p>
                         <div class="row">
                             <div class="col-lg-12">
                                 <?php $this->load->view('layouts/_alert') ?>
@@ -66,7 +66,7 @@
                                     <button type="submit" class="btn btn-block btn-dark">Login</button>
                                 </div>
                                 <div class="col-lg-12 text-center mt-5">
-                                    Lupa email/password? Silahkan hubungi admin.
+                                    Lupa email/password? Silahkan hubungi administrator.
                                 </div>
                             </div>
                         </form>

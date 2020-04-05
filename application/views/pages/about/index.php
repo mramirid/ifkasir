@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img class="card-img-top img-fluid" height="890" width="593" src="<?= base_url('assets/images/about/aliev.jpg') ?>"
+                    <img class="card-img-top img-fluid" height="890" width="593" src="<?= base_url('assets/images/about/aliev.png') ?>"
                         alt="Card image cap">
                     <div class="card-body">
                         <h4 class="card-title">Aliev Wisnu Prasetyo</h4>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2020 at 08:14 AM
+-- Generation Time: Apr 05, 2020 at 07:04 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -44,7 +44,13 @@ INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_baran
 (3, 3, 3, 100, 500000),
 (4, 4, 4, 60, 180000),
 (8, 3, 2, 10, 30000),
-(9, 5, 5, 3, 15000);
+(9, 5, 5, 3, 15000),
+(10, 6, 2, 56, 168000),
+(11, 6, 3, 70, 350000),
+(12, 7, 5, 83, 415000),
+(13, 7, 6, 150, 600000),
+(14, 8, 7, 53, 265000),
+(15, 8, 8, 89, 623000);
 
 --
 -- Triggers `detail_pembelian`
@@ -123,7 +129,10 @@ INSERT INTO `detail_penjualan` (`id_detail_penjualan`, `id_penjualan`, `id_baran
 (37, 51, 3, 2, 10000),
 (38, 51, 4, 3, 15000),
 (39, 52, 3, 12, 60000),
-(40, 52, 4, 8, 40000);
+(40, 52, 4, 8, 40000),
+(41, 53, 3, 3, 15000),
+(42, 54, 3, 4, 20000),
+(43, 54, 5, 3, 15000);
 
 --
 -- Triggers `detail_penjualan`
@@ -213,7 +222,10 @@ CREATE TABLE `pembelian` (
 INSERT INTO `pembelian` (`id_pembelian`, `id_user`, `waktu_pembelian`, `total_harga`) VALUES
 (3, 2, '2020-03-22 22:11:22', 45000),
 (4, 2, '2020-03-22 22:16:17', 180000),
-(5, 1, '2020-03-23 03:03:08', 15000);
+(5, 1, '2020-03-23 03:03:08', 15000),
+(6, 11, '2020-03-26 19:09:42', 518000),
+(7, 12, '2020-03-26 19:09:54', 1015000),
+(8, 14, '2020-03-26 19:09:54', 888000);
 
 -- --------------------------------------------------------
 
@@ -251,7 +263,9 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `waktu_penjualan`, `total_ha
 (49, 7, '2020-03-25 14:03:38', 10000),
 (50, 14, '2020-03-26 00:22:16', 30000),
 (51, 6, '2020-03-26 10:17:00', 25000),
-(52, 6, '2020-03-26 14:53:58', 100000);
+(52, 6, '2020-03-26 14:53:58', 100000),
+(53, 6, '2020-03-31 00:32:08', 15000),
+(54, 6, '2020-04-01 22:10:32', 35000);
 
 -- --------------------------------------------------------
 
@@ -272,11 +286,13 @@ CREATE TABLE `stock_barang` (
 --
 
 INSERT INTO `stock_barang` (`id_barang`, `tipe_barang`, `nama_barang`, `qty_inventory`, `harga_jual`) VALUES
-(2, 'minuman', 'Teh Sariwangi', 0, 3000),
-(3, 'makanan', 'Indomie Goreng', 5, 5000),
+(2, 'minuman', 'Teh Sariwangi', 56, 3000),
+(3, 'makanan', 'Indomie Goreng', 68, 5000),
 (4, 'makanan', 'Indomie Kare Spesial', 24, 5000),
-(5, 'minuman', 'Good Day Freeze', 1, 5000),
-(6, 'minuman', 'Extra Joss', 0, 4000);
+(5, 'minuman', 'Good Day Freeze', 81, 5000),
+(6, 'minuman', 'Extra Joss', 150, 4000),
+(7, 'minuman', 'Beng Beng', 53, 5000),
+(8, 'minuman', 'Hilo Milk', 89, 7000);
 
 -- --------------------------------------------------------
 
@@ -302,7 +318,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `telefon`, `ktp`, `role`, `status`) VALUES
 (6, 'Administrator', 'admin@admin.com', '$2y$10$VxFzBtDgQviH9q/IqS3dS.TpaW6sxT31vjJdqE4oLgtyQFuQQvBSq', '911', '17081010000', 'admin', 'aktif'),
 (7, 'Kasir', 'kasir@kasir.com', '$2y$10$pZ28jFXoSs3V9bYYp0SmwuW19EmUvAcQjEezYnurYA2GxNVQg7YkO', '087855777360', '17081010054', 'kasir', 'aktif'),
-(8, 'Alfath Daryl Alhajir', 'kasir2@kasir.com', '$2y$10$L85.qX10Ktnc1gfkaHUL8OcXC4j.CIZDnKwBdDLeMN7xTaS.dXOBW', '087855777360', '17081010055', 'kasir', 'non-aktif'),
+(8, 'Kasir Kedua', 'kasir2@kasir.com', '$2y$10$L85.qX10Ktnc1gfkaHUL8OcXC4j.CIZDnKwBdDLeMN7xTaS.dXOBW', '087855777360', '17081010055', 'kasir', 'non-aktif'),
 (10, 'Kasir Keempat', 'kasir4@kasir.com', '$2y$10$g/bU7dk/BVTYiF1WKVEJ.eQZSHvQRbNoh0Ht8jrT06kdDfAYpNkcW', '447773', '17081010051', 'kasir', 'non-aktif'),
 (11, 'Kasir Kelima', 'kasir5@kasir.com', '$2y$10$rDB6KRsFFAowt0GvxEIfgOfTW80NKc1gJm2qbUQs5QW7IbPMrctXG', '12449939', '17081010093', 'kasir', 'aktif'),
 (12, 'Kasir Keenam', 'kasir6@kasir.com', '$2y$10$TtlU9R8xyawAHcDIe2kpf.dC1PU2Y/pLPmbvOD81XhPkpWlu9G6na', '888449333', '17081010044', 'kasir', 'aktif'),
@@ -376,19 +392,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `keuntungan`
@@ -400,19 +416,19 @@ ALTER TABLE `keuntungan`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `stock_barang`
 --
 ALTER TABLE `stock_barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`

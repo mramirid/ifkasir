@@ -5,14 +5,15 @@
     <nav class="navbar top-navbar navbar-expand-md">
         <div class="navbar-header" data-logobg="skin6">
             <!-- This is for the sidebar toggle which is visible on mobile only -->
-            <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                    class="ti-menu ti-close"></i></a>
+            <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                <i class="ti-menu ti-close"></i>
+            </a>
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
             <div class="navbar-brand">
                 <!-- Logo icon -->
-                <a href="index.html">
+                <a href="<?= base_url('home') ?>">
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
                         <img src="<?= base_url('assets/images/logo-icon.png') ?>" height="40" alt="homepage" class="dark-logo" />

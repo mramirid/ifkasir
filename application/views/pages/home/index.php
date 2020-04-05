@@ -82,7 +82,7 @@
                         <div class="stats ct-charts position-relative" style="height: 350px;"></div>
                     </div>
                     <ul class="list-inline text-center mt-4 mb-0">
-                        <li class="list-inline-item text-muted font-italic">Pendapatan minggu ini (dalam lipatan ratusan)</li>
+                        <li class="list-inline-item text-muted font-italic">Pendapatan harian (dalam lipatan ratusan)</li>
                     </ul>
                     <script>
                         // Tanggal & total saling berhubungan
