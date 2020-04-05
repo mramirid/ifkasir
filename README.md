@@ -1,6 +1,6 @@
 # IFKasir
 
-Aplikasi IFKasir untuk proyek PKL
+Aplikasi manajemen inventory, kasir dan pembukuan berbasis Web
 
 File database bisa ditemukan di /assets/db/ifkasir.sql
 
