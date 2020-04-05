@@ -148,7 +148,7 @@
 	</script>
 
     <!-- Tabel inventory pakai data table -->
-    <?php if ($this->uri->segment(1) == 'inv') : ?>
+    <?php if ($this->uri->segment(1) == 'inv' || $this->uri->segment(1) == 'invloss') : ?>
         <script src="<?= base_url() ?>assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
         <script>
             $('#tabel_pembelian, #tabel_inv').DataTable();

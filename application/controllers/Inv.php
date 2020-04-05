@@ -7,6 +7,8 @@ class Inv extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('inv_model');
         
         $is_login = $this->session->userdata('is_login');
         
@@ -16,22 +18,22 @@ class Inv extends MY_Controller
             return;
         }
 
-        $this->data['user'] = $this->inv->get_session();
+        $this->data['user'] = $this->inv_model->get_session();
     }
 
     // ============================ MAIN FUNCTION ==================================
     public function index()
     {
-        $data['list_barang'] = $this->inv->list_barang();
-        $data['list_pembelian'] = $this->inv->list_pembelian();
-        $data['jumlah_barang'] = $this->inv->jumlah_barang();
-        $data['jumlah_total_barang'] = $this->inv->jumlah_total_barang()['qty_inventory'];
-        $data['jumlah_pegawai'] = $this->inv->jumlah_pegawai();
-        $data['kerugian'] = $this->inv->kerugian()['kerugian'];
+        $data['list_barang'] = $this->inv_model->list_barang();
+        $data['list_pembelian'] = $this->inv_model->list_pembelian();
+        $data['jumlah_barang'] = $this->inv_model->jumlah_barang();
+        $data['jumlah_total_barang'] = $this->inv_model->jumlah_total_barang()['qty_inventory'];
+        $data['jumlah_pegawai'] = $this->inv_model->jumlah_pegawai();
+        $data['kerugian'] = $this->inv_model->kerugian()['kerugian'];
 
         $data['title']              = 'IFkasir - Inventory';
         $data['breadcrumb_title']   = "Dashboard Inventory";
-        $data['breadcrumb_path']    = 'Invetory';
+        $data['breadcrumb_path']    = 'Invetory / Dashboard';
         $data['page']               = 'pages/inv/index';
         
         $this->view($data);
@@ -46,53 +48,15 @@ class Inv extends MY_Controller
             redirect();
         }
         $data['id'] = $id;
-        $data['list_barang'] = $this->inv->list_barang();
-        $data['detail_pembelian'] = $this->inv->list_detail_pembelian($id);
+        $data['list_barang'] = $this->inv_model->list_barang();
+        $data['detail_pembelian'] = $this->inv_model->list_detail_pembelian($id);
 
         $data['title']              = 'IFkasir - Daftar Beli';
         $data['breadcrumb_title']   = "Daftar Beli";
-        $data['breadcrumb_path']    = 'Invetory / Daftar Beli';
+        $data['breadcrumb_path']    = "Invetory / Daftar Beli / $id";
         $data['page']               = 'pages/inv/list_buy';
         
         $this->view($data);
-    }
-
-    public function loss($id = null)
-    {
-        if ($this->session->userdata('email') === null) {
-            redirect();
-        }
-        $data['id'] = $id;
-        $data['list_barang'] = $this->inv->list_barang();
-        $data['loss_pembelian'] = $this->inv->list_loss_pembelian();
-        $data['title'] = 'Ifkasir - Daftar Rugi';
-        $this->load->view('inv/head', $data);
-        $this->load->view('inv/nav');
-        $this->load->view('inv/side');
-        $this->load->view('list_loss');
-        $this->load->view('inv/foot');
-    }
-
-    public function set_rugi($id = null)
-    {
-        if ($this->session->userdata('email') === null) {
-            redirect();
-        }
-        if (!isset($id)) {
-            redirect();
-        }
-        $data['id'] = $id;
-        $data['list_barang_pembelian'] = $this->inv->list_barang_pembelian($id);
-        $data['detail_pembelian'] = $this->inv->list_detail_pembelian($id);
-
-        $data['list_barang'] = $this->inv->list_barang();
-        $data['detail_pembelian'] = $this->inv->list_detail_pembelian($id);
-        $data['title'] = 'Ifkasir -  Rugi Detail';
-        $this->load->view('inv/head', $data);
-        $this->load->view('inv/nav');
-        $this->load->view('inv/side');
-        $this->load->view('set_loss');
-        $this->load->view('inv/foot');
     }
 
     // ============================ FUNCTION STOCK ==================================
@@ -261,27 +225,8 @@ class Inv extends MY_Controller
             $this->db->where('id_pembelian', $id_pembelian);
             $this->db->update('pembelian', $data);
         }
-        redirect();
-    }
 
-    // ============================ FUNCTION RUGI ==================================
-    public function edit_rugi($id)
-    {
-        $id_pembelian = $this->input->post('id_pembelian');
-        $subtotal_rugi = $this->input->post('total_rugi');
-        $data = array(
-            'subtotal_rugi' => $subtotal_rugi
-        );
-        $this->db->where('id_detail_pembelian', $id);
-        $this->db->update('detail_pembelian', $data);
-
-        $stock_barang = $this->db->query("SELECT SUM(subtotal_rugi) AS total_rugi FROM detail_pembelian WHERE id_pembelian='$id_pembelian'")->row_array();
-        $data = array(
-            'total_rugi' => $stock_barang['total_rugi']
-        );
-        $this->db->where('id_pembelian', $id_pembelian);
-        $this->db->update('pembelian', $data);
-        redirect("inv/set_rugi/$id_pembelian");
+        redirect('inv');
     }
 }
 

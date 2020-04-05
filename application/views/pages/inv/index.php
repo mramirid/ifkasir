@@ -19,8 +19,12 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><?php if ($jumlah_total_barang) echo $jumlah_total_barang;
-                                                                                            else echo "0" ?></h2>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            <?php 
+                                if ($jumlah_total_barang) echo $jumlah_total_barang;
+                                else echo "0" 
+                            ?>
+                        </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">All Stock Inventory</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
@@ -34,8 +38,12 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium"><?php if ($jumlah_pegawai) echo $jumlah_pegawai;
-                                                                            else echo "0" ?></h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">
+                                <?php 
+                                    if ($jumlah_pegawai) echo $jumlah_pegawai;
+                                    else echo "0"
+                                ?>
+                            </h2>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Show Employees</h6>
                     </div>
@@ -49,8 +57,12 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 font-weight-medium"><?php if ($kerugian) echo $kerugian;
-                                                                        else echo "0" ?></h2>
+                        <h2 class="text-dark mb-1 font-weight-medium">
+                            <?php 
+                                if ($kerugian) echo $kerugian;
+                                else echo "0"
+                            ?>
+                        </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Item losses</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
@@ -140,7 +152,7 @@
                                         <td class="text-center">
                                             <a href="<?= base_url() . 'inv/set_status/' . $row->id_pembelian ?>" class="btn btn-dark badge">Set <?php if ($row->status == 1) echo "Belum"; ?> Selesai</a><br>
                                             <?php if ($row->status == 1) { ?>
-                                                <a href="<?= base_url() . 'inv/set_rugi/' . $row->id_pembelian ?>" class="btn btn-warning badge">Set Rugi</a><br>
+                                                <a href="<?= base_url() . 'invloss/set_rugi/' . $row->id_pembelian ?>" class="btn btn-warning badge">Set Rugi</a><br>
                                             <?php } ?>
                                             <a href="<?= base_url() . 'inv/buy/' . $row->id_pembelian ?>" class="btn btn-primary badge">Edit</a>
                                             <a href="#" onclick="del_beli<?= $row->id_pembelian ?>()" class="btn btn-danger badge">Delete</a>

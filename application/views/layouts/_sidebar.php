@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('inv') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('invloss') ?>" aria-expanded="false">
                         <i data-feather="list" class="feather-icon"></i>
                         <span class="hide-menu">Daftar Rugi</span>
                     </a>
