@@ -81,7 +81,7 @@
                                 foreach ($detail_pembelian->result() as $row) { ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $row->id_barang ?></td>
+                                        <td><?= $row->nama_barang ?></td>
                                         <td><?= $row->qty_beli ?></td>
                                         <td><?= $row->subtotal_beli ?></td>
                                         <td>

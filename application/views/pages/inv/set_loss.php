@@ -32,7 +32,7 @@
                                 foreach ($detail_pembelian->result() as $row) { ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?= $row->id_barang ?></td>
+                                        <td><?= $row->nama_barang ?></td>
                                         <td><?= $row->subtotal_beli ?></td>
                                         <td><?= $row->subtotal_rugi ?></td>
                                         <td>
@@ -51,20 +51,28 @@
                                                             </button>
                                                         </div>
 
-                                                        <form role="form" action="<?= base_url() . 'invloss/edit_rugi/' . $row->id_detail_pembelian ?>" method="post">
+                                                        <form role="form" action="<?= base_url() . 'InvLoss/edit_rugi/' . $row->id_detail_pembelian ?>" method="post">
                                                             <div class="modal-body">
                                                                 <div class="card-body">
                                                                     <div class="row">
                                                                         <div class="col-sm">
                                                                             <div class="form-group">
                                                                                 <label>Nama Menu</label>
-                                                                                <input type="name" name="id_menu" class="form-control" value="<?= $row->id_barang ?>" readonly>
+                                                                                <input type="name" name="id_menu" class="form-control" value="<?= $row->nama_barang ?>" readonly>
                                                                             </div>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="row">
                                                                         <div class="col-sm">
                                                                             <div class="form-group">
                                                                                 <label>Jumlah Barang</label>
                                                                                 <input type="number" name="jumlah_barang" class="form-control" value="<?= $row->qty_beli ?>" readonly>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm">
+                                                                            <div class="form-group">
+                                                                                <label>Jumlah Rusak</label>
+                                                                                <input type="number" name="jumlah_rusak" class="form-control" value="<?= $row->qty_rusak ?>">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -77,7 +85,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" name="edit_rugi" class="btn btn-primary">Edit Data</button>
+                                                                <button type="submit" name="edit_rugi" class="btn btn-primary">Set Data</button>
                                                             </div>
                                                         </form>
                                                     </div>

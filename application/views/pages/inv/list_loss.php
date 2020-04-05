@@ -34,13 +34,15 @@
                                 foreach ($loss_pembelian->result() as $row) { ?>
                                     <tr>
                                         <td><?= $row->waktu_pembelian ?></td>
-                                        <td><?= $row->id_user ?></td>
+                                        <td><?= $row->nama ?></td>
                                         <td><?= $row->nama_toko ?></td>
                                         <td><?= $row->total_harga ?></td>
                                         <td><?= $row->total_rugi ?></td>
-                                        <td class="text-center">
-                                            <a href="<?= base_url() . 'invloss/set_rugi/' . $row->id_pembelian ?>" class="btn btn-warning badge">Set Rugi</a><br>
-                                        </td>
+                                        <?php if ($this->session->userdata('role') == 'admin' || $this->session->userdata('nama') == $row->nama) { ?>
+                                            <td class="text-center">
+                                                <a href="<?= base_url() . 'InvLoss/set_rugi/' . $row->id_pembelian ?>" class="btn btn-warning badge">Set Rugi</a><br>
+                                            </td>
+                                        <?php } ?>
                                     </tr>
                                 <?php } ?>
                             </tbody>

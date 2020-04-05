@@ -1,17 +1,17 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Invloss extends MY_Controller 
+class InvLoss extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
 
         $this->load->model('inv_model');
-        
+
         $is_login = $this->session->userdata('is_login');
-        
+
         if (!$is_login) {
             $this->session->set_flashdata('warning', 'Anda belum login');
             redirect(base_url('login'));
@@ -35,8 +35,8 @@ class Invloss extends MY_Controller
         $data['breadcrumb_title']   = "Daftar Rugi";
         $data['breadcrumb_path']    = "Invetory / Daftar Rugi";
         $data['page']               = 'pages/inv/list_loss';
-        
-        $this->view($data);        
+
+        $this->view($data);
     }
 
     public function set_rugi($id = null)
@@ -67,8 +67,10 @@ class Invloss extends MY_Controller
     public function edit_rugi($id)
     {
         $id_pembelian = $this->input->post('id_pembelian');
+        $qty_rusak = $this->input->post('jumlah_rusak');
         $subtotal_rugi = $this->input->post('total_rugi');
         $data = array(
+            'qty_rusak' => $qty_rusak,
             'subtotal_rugi' => $subtotal_rugi
         );
         $this->db->where('id_detail_pembelian', $id);
@@ -80,7 +82,7 @@ class Invloss extends MY_Controller
         );
         $this->db->where('id_pembelian', $id_pembelian);
         $this->db->update('pembelian', $data);
-        redirect("invloss/set_rugi/$id_pembelian");
+        redirect("InvLoss/set_rugi/$id_pembelian");
     }
 }
 
