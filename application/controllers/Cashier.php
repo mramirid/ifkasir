@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Controller Penjualan
+ * Controller Pemesanan
  */
 class Cashier extends MY_Controller 
 {

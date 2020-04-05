@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class InvLoss extends MY_Controller 
+class Invloss extends MY_Controller 
 {
     public function __construct()
     {
@@ -84,4 +84,4 @@ class InvLoss extends MY_Controller
     }
 }
 
-/* End of file InvLoss.php */
+/* End of file Invloss.php */

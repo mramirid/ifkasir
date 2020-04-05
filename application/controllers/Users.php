@@ -2,6 +2,9 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Kontroller list user
+ */
 class Users extends MY_Controller 
 {
     public function __construct()
