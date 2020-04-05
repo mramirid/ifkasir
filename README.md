@@ -2,6 +2,8 @@
 
 Aplikasi IFKasir untuk proyek PKL
 
+File database bisa ditemukan di /assets/db/ifkasir.sql
+
 <br>
 
 <p align="center">
