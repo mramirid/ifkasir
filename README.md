@@ -21,7 +21,5 @@ File database bisa ditemukan di /assets/db/ifkasir.sql
 |      ...      |        ...       |    ...   |
 | Kasir Ketujuh | kasir7@kasir.com | kasir    |
 
-<p align="center">
-  <img src="/assets/images/users.png" alt="Tabel User">
-</p>
+<img src="/assets/images/users.png" alt="Tabel User">
 
