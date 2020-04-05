@@ -11,10 +11,11 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/logo-icon.png') ?>">
     <title><?= $title ?></title>
-    <!-- Custom CSS -->
+    <!-- CSS Libraries -->
     <link href="<?= base_url('assets/extra-libs/c3/c3.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/libs/chartist/chartist.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css') ?>" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/css/style.min.css') ?>" rel="stylesheet">
 </head>
@@ -91,7 +92,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center text-muted">
-                All Rights Reserved by PKL Kelompok Kasir. Designed and Developed by Amir - Alfath - Aliev.
+                All Rights Reserved by PKL IFKasir Kelompok Inventory - Kasir - Pembukuan.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -122,14 +123,17 @@
     <!--This page JavaScript -->
     <script src="<?= base_url('assets/extra-libs/c3/d3.min.js') ?>"></script>
     <script src="<?= base_url('assets/extra-libs/c3/c3.min.js') ?>"></script>
+
+    <!-- Grafik di dashboard -->
     <?php if ($this->uri->segment(1) == 'home') : ?>
         <script src="<?= base_url('assets/libs/chartist/chartist.min.js') ?>"></script>
         <script src="<?= base_url('assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js') ?>"></script>
         <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js') ?>"></script>
         <script src="<?= base_url('assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js') ?>"></script>
+        <script src="<?= base_url('assets/js/pages/dashboards/dashboard.js') ?>"></script>
     <?php endif ?>
-    <script src="<?= base_url('assets/js/pages/dashboards/dashboard.js') ?>"></script>
-
+    
+    <!-- Cetak struk -->
     <script>
 		function printDiv(divName){
 			var printContents = document.getElementById(divName).innerHTML;
@@ -142,6 +146,14 @@
 			document.body.innerHTML = originalContents;
 		}
 	</script>
+
+    <!-- Tabel inventory pakai data table -->
+    <?php if ($this->uri->segment(1) == 'inv') : ?>
+        <script src="<?= base_url() ?>assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script>
+            $('#tabel_pembelian, #tabel_inv').DataTable();
+        </script>
+    <?php endif ?>
 </body>
 
 </html>

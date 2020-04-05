@@ -43,9 +43,15 @@
                 <!-- Submemu Manajemen Inventory -->
                 <li class="nav-small-cap"><span class="hide-menu">Manajemen Inventory</span></li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link sidebar-link" href="<?= base_url('inventory') ?>" aria-expanded="false">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('inv') ?>" aria-expanded="false">
                         <i data-feather="box" class="feather-icon"></i>
                         <span class="hide-menu">Inventory</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link" href="<?= base_url('inv') ?>" aria-expanded="false">
+                        <i data-feather="list" class="feather-icon"></i>
+                        <span class="hide-menu">Daftar Rugi</span>
                     </a>
                 </li>
 
