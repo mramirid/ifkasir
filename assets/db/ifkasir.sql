@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2020 at 07:04 AM
+-- Generation Time: Apr 05, 2020 at 09:55 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -30,57 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `detail_pembelian` (
   `id_detail_pembelian` int(11) NOT NULL,
-  `id_pembelian` int(11) NOT NULL,
+  `id_pembelian` varchar(64) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `qty_beli` int(11) NOT NULL,
-  `subtotal_beli` int(11) NOT NULL DEFAULT '0'
+  `subtotal_beli` int(11) NOT NULL DEFAULT '0',
+  `subtotal_rugi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `detail_pembelian`
 --
 
-INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_barang`, `qty_beli`, `subtotal_beli`) VALUES
-(3, 3, 3, 100, 500000),
-(4, 4, 4, 60, 180000),
-(8, 3, 2, 10, 30000),
-(9, 5, 5, 3, 15000),
-(10, 6, 2, 56, 168000),
-(11, 6, 3, 70, 350000),
-(12, 7, 5, 83, 415000),
-(13, 7, 6, 150, 600000),
-(14, 8, 7, 53, 265000),
-(15, 8, 8, 89, 623000);
-
---
--- Triggers `detail_pembelian`
---
-DELIMITER $$
-CREATE TRIGGER `hitung_subtotal_beli` BEFORE INSERT ON `detail_pembelian` FOR EACH ROW BEGIN
-	# ---- Hitung Subtotal ----
-	DECLARE harga_barang INT DEFAULT 0;
-	SET harga_barang = (SELECT harga_jual FROM stock_barang WHERE id_barang = NEW.id_barang LIMIT 1);
-
-	SET NEW.subtotal_beli = NEW.qty_beli * harga_barang;
-    END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `tambah_qty_barang` AFTER INSERT ON `detail_pembelian` FOR EACH ROW BEGIN
-	# Update qty barang di tabel stock_barang
-	UPDATE stock_barang
-	SET qty_inventory = qty_inventory + NEW.qty_beli
-	WHERE id_barang = NEW.id_barang;
-    END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `update_total_harga_pembelian` AFTER INSERT ON `detail_pembelian` FOR EACH ROW # ---- Hitung Total Harga ----
-UPDATE pembelian
-SET total_harga = total_harga + NEW.subtotal_beli
-WHERE id_pembelian = NEW.id_pembelian
-$$
-DELIMITER ;
+INSERT INTO `detail_pembelian` (`id_detail_pembelian`, `id_pembelian`, `id_barang`, `qty_beli`, `subtotal_beli`, `subtotal_rugi`) VALUES
+(16, '78066ff333a2d46528d18bbe03a19e2a', 2, 4, 5000, 0),
+(18, 'b8fb1d5198926d7ab9daa76a4d8d8f15', 2, 4, 5000, 4000);
 
 -- --------------------------------------------------------
 
@@ -132,7 +95,10 @@ INSERT INTO `detail_penjualan` (`id_detail_penjualan`, `id_penjualan`, `id_baran
 (40, 52, 4, 8, 40000),
 (41, 53, 3, 3, 15000),
 (42, 54, 3, 4, 20000),
-(43, 54, 5, 3, 15000);
+(43, 54, 5, 3, 15000),
+(44, 55, 3, 3, 15000),
+(45, 55, 6, 5, 20000),
+(46, 56, 6, 6, 24000);
 
 --
 -- Triggers `detail_penjualan`
@@ -209,23 +175,22 @@ CREATE TABLE `keuntungan` (
 --
 
 CREATE TABLE `pembelian` (
-  `id_pembelian` int(11) NOT NULL,
+  `id_pembelian` varchar(64) NOT NULL,
   `id_user` int(11) NOT NULL,
+  `nama_toko` varchar(255) NOT NULL,
   `waktu_pembelian` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `total_harga` int(11) NOT NULL DEFAULT '0'
+  `banyak_barang` int(11) NOT NULL,
+  `total_harga` int(11) NOT NULL DEFAULT '0',
+  `total_rugi` int(11) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pembelian`
 --
 
-INSERT INTO `pembelian` (`id_pembelian`, `id_user`, `waktu_pembelian`, `total_harga`) VALUES
-(3, 2, '2020-03-22 22:11:22', 45000),
-(4, 2, '2020-03-22 22:16:17', 180000),
-(5, 1, '2020-03-23 03:03:08', 15000),
-(6, 11, '2020-03-26 19:09:42', 518000),
-(7, 12, '2020-03-26 19:09:54', 1015000),
-(8, 14, '2020-03-26 19:09:54', 888000);
+INSERT INTO `pembelian` (`id_pembelian`, `id_user`, `nama_toko`, `waktu_pembelian`, `banyak_barang`, `total_harga`, `total_rugi`, `status`) VALUES
+('b8fb1d5198926d7ab9daa76a4d8d8f15', 6, 'Kacong Store', '2020-04-05 09:25:26', 4, 5000, 4000, 1);
 
 -- --------------------------------------------------------
 
@@ -265,7 +230,9 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `waktu_penjualan`, `total_ha
 (51, 6, '2020-03-26 10:17:00', 25000),
 (52, 6, '2020-03-26 14:53:58', 100000),
 (53, 6, '2020-03-31 00:32:08', 15000),
-(54, 6, '2020-04-01 22:10:32', 35000);
+(54, 6, '2020-04-01 22:10:32', 35000),
+(55, 6, '2020-04-05 16:49:45', 35000),
+(56, 6, '2020-04-05 16:50:23', 24000);
 
 -- --------------------------------------------------------
 
@@ -286,11 +253,11 @@ CREATE TABLE `stock_barang` (
 --
 
 INSERT INTO `stock_barang` (`id_barang`, `tipe_barang`, `nama_barang`, `qty_inventory`, `harga_jual`) VALUES
-(2, 'minuman', 'Teh Sariwangi', 56, 3000),
-(3, 'makanan', 'Indomie Goreng', 68, 5000),
+(2, 'minuman', 'Teh Sariwangi', 60, 3000),
+(3, 'makanan', 'Indomie Goreng', 65, 5000),
 (4, 'makanan', 'Indomie Kare Spesial', 24, 5000),
 (5, 'minuman', 'Good Day Freeze', 81, 5000),
-(6, 'minuman', 'Extra Joss', 150, 4000),
+(6, 'minuman', 'Extra Joss', 139, 4000),
 (7, 'minuman', 'Beng Beng', 53, 5000),
 (8, 'minuman', 'Hilo Milk', 89, 7000);
 
@@ -392,19 +359,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `detail_pembelian`
 --
 ALTER TABLE `detail_pembelian`
-  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_detail_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `keuntungan`
@@ -413,16 +380,10 @@ ALTER TABLE `keuntungan`
   MODIFY `id_keuntungan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `pembelian`
---
-ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `stock_barang`
