@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2020 at 06:45 AM
+-- Generation Time: Apr 05, 2020 at 07:04 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -318,7 +318,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `email`, `password`, `telefon`, `ktp`, `role`, `status`) VALUES
 (6, 'Administrator', 'admin@admin.com', '$2y$10$VxFzBtDgQviH9q/IqS3dS.TpaW6sxT31vjJdqE4oLgtyQFuQQvBSq', '911', '17081010000', 'admin', 'aktif'),
 (7, 'Kasir', 'kasir@kasir.com', '$2y$10$pZ28jFXoSs3V9bYYp0SmwuW19EmUvAcQjEezYnurYA2GxNVQg7YkO', '087855777360', '17081010054', 'kasir', 'aktif'),
-(8, 'Alfath Daryl Alhajir', 'kasir2@kasir.com', '$2y$10$L85.qX10Ktnc1gfkaHUL8OcXC4j.CIZDnKwBdDLeMN7xTaS.dXOBW', '087855777360', '17081010055', 'kasir', 'non-aktif'),
+(8, 'Kasir Kedua', 'kasir2@kasir.com', '$2y$10$L85.qX10Ktnc1gfkaHUL8OcXC4j.CIZDnKwBdDLeMN7xTaS.dXOBW', '087855777360', '17081010055', 'kasir', 'non-aktif'),
 (10, 'Kasir Keempat', 'kasir4@kasir.com', '$2y$10$g/bU7dk/BVTYiF1WKVEJ.eQZSHvQRbNoh0Ht8jrT06kdDfAYpNkcW', '447773', '17081010051', 'kasir', 'non-aktif'),
 (11, 'Kasir Kelima', 'kasir5@kasir.com', '$2y$10$rDB6KRsFFAowt0GvxEIfgOfTW80NKc1gJm2qbUQs5QW7IbPMrctXG', '12449939', '17081010093', 'kasir', 'aktif'),
 (12, 'Kasir Keenam', 'kasir6@kasir.com', '$2y$10$TtlU9R8xyawAHcDIe2kpf.dC1PU2Y/pLPmbvOD81XhPkpWlu9G6na', '888449333', '17081010044', 'kasir', 'aktif'),
