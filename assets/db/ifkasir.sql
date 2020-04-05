@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2020 at 12:17 PM
+-- Generation Time: Apr 05, 2020 at 06:45 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.3
 
@@ -129,7 +129,10 @@ INSERT INTO `detail_penjualan` (`id_detail_penjualan`, `id_penjualan`, `id_baran
 (37, 51, 3, 2, 10000),
 (38, 51, 4, 3, 15000),
 (39, 52, 3, 12, 60000),
-(40, 52, 4, 8, 40000);
+(40, 52, 4, 8, 40000),
+(41, 53, 3, 3, 15000),
+(42, 54, 3, 4, 20000),
+(43, 54, 5, 3, 15000);
 
 --
 -- Triggers `detail_penjualan`
@@ -260,7 +263,9 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `waktu_penjualan`, `total_ha
 (49, 7, '2020-03-25 14:03:38', 10000),
 (50, 14, '2020-03-26 00:22:16', 30000),
 (51, 6, '2020-03-26 10:17:00', 25000),
-(52, 6, '2020-03-26 14:53:58', 100000);
+(52, 6, '2020-03-26 14:53:58', 100000),
+(53, 6, '2020-03-31 00:32:08', 15000),
+(54, 6, '2020-04-01 22:10:32', 35000);
 
 -- --------------------------------------------------------
 
@@ -282,9 +287,9 @@ CREATE TABLE `stock_barang` (
 
 INSERT INTO `stock_barang` (`id_barang`, `tipe_barang`, `nama_barang`, `qty_inventory`, `harga_jual`) VALUES
 (2, 'minuman', 'Teh Sariwangi', 56, 3000),
-(3, 'makanan', 'Indomie Goreng', 75, 5000),
+(3, 'makanan', 'Indomie Goreng', 68, 5000),
 (4, 'makanan', 'Indomie Kare Spesial', 24, 5000),
-(5, 'minuman', 'Good Day Freeze', 84, 5000),
+(5, 'minuman', 'Good Day Freeze', 81, 5000),
 (6, 'minuman', 'Extra Joss', 150, 4000),
 (7, 'minuman', 'Beng Beng', 53, 5000),
 (8, 'minuman', 'Hilo Milk', 89, 7000);
@@ -393,7 +398,7 @@ ALTER TABLE `detail_pembelian`
 -- AUTO_INCREMENT for table `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_detail_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `keranjang`
@@ -417,7 +422,7 @@ ALTER TABLE `pembelian`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `stock_barang`
