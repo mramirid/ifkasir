@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="card-group">
                         <div class="card">
-                            <img class="card-img-top img-fluid" height="890" width="593" src="<?= base_url('assets/images/about/default.jpg') ?>">
+                            <img class="card-img-top img-fluid" height="890" width="593" src="<?= base_url('assets/images/about/fathur.jpg') ?>">
                             <div class="card-body">
                                 <h4 class="card-title">Moh. Fathur Rohman</h4>
                                 <p class="card-text">17081010048</p>
