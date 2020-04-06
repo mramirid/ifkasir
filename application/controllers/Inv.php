@@ -139,11 +139,34 @@ class Inv extends MY_Controller
     public function set_status($id)
     {
         $cek_beli = $this->db->where('id_pembelian', $id)->get('pembelian')->row_array();
+        $cek_detail_beli = $this->db->where('id_pembelian', $id)->get('detail_pembelian');
+
+
         if ($cek_beli['status'] == 1) {
+            foreach ($cek_detail_beli->result() as $row) {
+                $cek_barang = $this->db->where('id_barang', $row->id_barang)->get('stock_barang')->row_array();
+                $qty_inventory = $cek_barang['qty_inventory'] - ($row->qty_beli - $row->qty_rusak);
+                $data = array(
+                    'qty_inventory' => $qty_inventory
+                );
+                $this->db->where('id_barang', $row->id_barang);
+                $this->db->update('stock_barang', $data);
+            }
+
             $data = array(
                 'status' => 0
             );
-        } else {
+        } else if ($cek_beli['status'] == 0) {
+            foreach ($cek_detail_beli->result() as $row) {
+                $cek_barang = $this->db->where('id_barang', $row->id_barang)->get('stock_barang')->row_array();
+                $qty_inventory = $cek_barang['qty_inventory'] + ($row->qty_beli - $row->qty_rusak);
+                $data = array(
+                    'qty_inventory' => $qty_inventory
+                );
+                $this->db->where('id_barang', $row->id_barang);
+                $this->db->update('stock_barang', $data);
+            }
+
             $data = array(
                 'status' => 1
             );

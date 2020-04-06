@@ -66,6 +66,7 @@ class InvLoss extends MY_Controller
     // ============================ FUNCTION RUGI ==================================
     public function edit_rugi($id)
     {
+        $cek_detail_pembelian = $this->db->where('id_detail_pembelian', $id)->get('detail_pembelian')->row_array();
         $id_pembelian = $this->input->post('id_pembelian');
         $qty_rusak = $this->input->post('jumlah_rusak');
         $subtotal_rugi = $this->input->post('total_rugi');
@@ -75,6 +76,14 @@ class InvLoss extends MY_Controller
         );
         $this->db->where('id_detail_pembelian', $id);
         $this->db->update('detail_pembelian', $data);
+
+        $cek_barang = $this->db->where('id_barang', $cek_detail_pembelian['id_barang'])->get('stock_barang')->row_array();
+        $qty_inventory = $cek_barang['qty_inventory'] + $cek_detail_pembelian['qty_rusak'] - $qty_rusak;
+        $data = array(
+            'qty_inventory' => $qty_inventory
+        );
+        $this->db->where('id_barang', $cek_detail_pembelian['id_barang']);
+        $this->db->update('stock_barang', $data);
 
         $stock_barang = $this->db->query("SELECT SUM(subtotal_rugi) AS total_rugi FROM detail_pembelian WHERE id_pembelian='$id_pembelian'")->row_array();
         $data = array(
