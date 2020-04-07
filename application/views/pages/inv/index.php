@@ -155,8 +155,12 @@
                                                 <?php if ($row->status == 1) { ?>
                                                     <a href="<?= base_url() . 'InvLoss/set_rugi/' . $row->id_pembelian ?>" class="btn btn-warning badge">Set Rugi</a><br>
                                                 <?php } ?>
-                                                <a href="<?= base_url() . 'inv/buy/' . $row->id_pembelian ?>" class="btn btn-primary badge">Edit</a>
-                                                <a href="#" onclick="del_beli<?= $row->id_pembelian ?>()" class="btn btn-danger badge">Delete</a>
+                                                <a href="<?= base_url() . 'inv/buy/' . $row->id_pembelian ?>" class="btn btn-<?php if ($row->status == 1) echo "success";
+                                                                                                                                else echo "primary"; ?> badge"><?php if ($row->status == 1) echo "Lihat";
+                                                                                                                                                                else echo "Edit"; ?></a>
+                                                <?php if ($row->status != 1) { ?>
+                                                    <a href="#" onclick="del_beli<?= $row->id_pembelian ?>()" class="btn btn-danger badge">Delete</a>
+                                                <?php } ?>
                                                 <script>
                                                     function del_beli<?= $row->id_pembelian ?>() {
                                                         var txt;

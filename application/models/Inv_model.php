@@ -11,9 +11,13 @@ class Inv_model extends CI_Model
 	{
 		return $this->db->get('stock_barang');
 	}
-	public function list_pembelian()
+	public function list_pembelian($id = null)
 	{
-		return $this->db->query("SELECT id_pembelian, user.nama, nama_toko, waktu_pembelian, banyak_barang, total_harga, pembelian.status FROM pembelian JOIN user ON user.id_user=pembelian.id_user");
+		if ($id == null) {
+			return $this->db->query("SELECT id_pembelian, user.nama, nama_toko, waktu_pembelian, banyak_barang, total_harga, pembelian.status FROM pembelian JOIN user ON user.id_user=pembelian.id_user");
+		} else {
+			return $this->db->query("SELECT id_pembelian, user.nama, nama_toko, waktu_pembelian, banyak_barang, total_harga, pembelian.status FROM pembelian JOIN user ON user.id_user=pembelian.id_user WHERE id_pembelian='$id'")->row_array();
+		}
 	}
 	public function list_loss_pembelian()
 	{

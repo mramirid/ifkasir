@@ -49,13 +49,14 @@ class Inv extends MY_Controller
         }
         $data['id'] = $id;
         $data['list_barang'] = $this->inv_model->list_barang();
+        $data['pembelian'] = $this->inv_model->list_pembelian($id);
         $data['detail_pembelian'] = $this->inv_model->list_detail_pembelian($id);
 
         $data['title']              = 'IFkasir - Daftar Beli';
         $data['breadcrumb_title']   = "Daftar Beli";
         $data['breadcrumb_path']    = "Invetory / Daftar Beli / $id";
         $data['page']               = 'pages/inv/list_buy';
-        
+
         $this->view($data);
     }
 
