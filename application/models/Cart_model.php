@@ -12,26 +12,23 @@ class Cart_model extends MY_Model
      */
     public function validateStock()
     {
-        $pesananPas = true;
-        $id_user    = $this->session->userdata('id_user');
-        $cart       = $this->where('id_user', $id_user)->get();
+        $valid   = true;
+        $id_user = $this->session->userdata('id_user');
+        $cart    = $this->where('id_user', $id_user)->get();
         
         foreach ($cart as $row) {
-            $pesanan      = $this->where('id_pesanan', $row->id_pesanan)->first();
-
-            $this->table  = 'stock_barang';
-            $barang       = $this->where('id_barang', $pesanan->id_barang)->first();       
+            $this->table = 'stock_barang';
+            $barang      = $this->where('id_barang', $row->id_barang)->first();       
             
-            if (($barang->qty_inventory - $pesanan->qty_pesanan) < 0) {
-                $this->session->set_flashdata("qty_pesanan_$pesanan->id_pesanan", "Stock hanya ada $barang->qty_inventory");
-
-                $pesananPas = false;
+            if (($barang->qty_inventory - $row->qty_pesanan) < 0) {
+                $this->session->set_flashdata("qty_pesanan_$row->id_pesanan", "Stock hanya ada $barang->qty_inventory");
+                $valid = false;
             }
 
-            $this->table    = 'keranjang';
+            $this->table = 'keranjang';
         }
 
-        return $pesananPas;
+        return $valid;
     }
 }
 
