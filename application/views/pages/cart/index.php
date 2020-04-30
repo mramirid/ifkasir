@@ -31,6 +31,7 @@
                                     <td class="text-center">Rp.<?= number_format($row->harga_jual, 0, ',', '.') ?>,-</td>
                                     <td>
                                         <form action="<?= base_url('cart/update') ?>" method="POST">
+                                            <input type="hidden" name="id_pesanan" value="<?= $row->id_pesanan ?>">
                                             <input type="hidden" name="id_barang" value="<?= $row->id_barang ?>">
                                             <div class="input-group">
                                                 <input type="number" name="qty_pesanan" class="form-control text-center" value="<?= $row->qty_pesanan ?>">

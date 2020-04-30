@@ -110,9 +110,12 @@ class Cart extends MY_Controller
             redirect(base_url('cart'));
         }
 
-        $id_barang = $this->input->post('id_barang');
+        $id_pesanan = $this->input->post('id_pesanan');
+        $id_barang  = $this->input->post('id_barang');
 
-        $data['content'] = $this->cart->where('id_barang', $id_barang)->first();   // Mengambil data dari cart
+        $data['content'] = $this->cart->where('id_barang', $id_barang)
+                                      ->where('id_pesanan', $id_pesanan)
+                                      ->first();   // Mengambil data dari cart
 
         if (!$data['content']) {
             $this->session->set_flashdata('warning', 'Data tidak ditemukan');
@@ -134,7 +137,12 @@ class Cart extends MY_Controller
         ];
 
         $this->cart->table  = 'keranjang';
-        if ($this->cart->where('id_barang', $id_barang)->update($cart)) {   // Jika update berhasil
+        if ($this->cart->where('id_pesanan', $id_pesanan)
+                       ->where('id_barang', $id_barang)
+                       ->where('id_user', $this->id_user)
+                       ->update($cart)) 
+        { 
+            // Jika update berhasil
             $this->session->set_flashdata('success', 'Kuantitas berhasil diubah');
         } else {
             $this->session->set_flashdata('error', 'Oops! Terjadi kesalahan');
@@ -188,7 +196,7 @@ class Cart extends MY_Controller
         $this->cart->where('id_user', $this->id_user)->delete();    // Hapus seluruh pesanan dari user
 
         if ($this->cart->count() < 1) {  // Jika tabel pesanan kosong, reset index id_pesanan
-            $this->cart->nukeTable();
+            $this->cart->resetIndex();
         }
 
         $this->session->set_flashdata('success', 'Keranjang belanja dibersihkan');
