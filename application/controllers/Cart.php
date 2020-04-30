@@ -175,7 +175,7 @@ class Cart extends MY_Controller
             $this->session->set_flashdata('error', 'Oops, terjadi suatu kesalahan');
         }
 
-        redirect(base_url('cashier'));
+        redirect(base_url('cart'));
     }
 
     /**
