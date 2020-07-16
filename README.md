@@ -1,6 +1,6 @@
 # IFKasir
 
-Aplikasi manajemen inventory, kasir dan pembukuan berbasis Web
+Aplikasi manajemen inventory dan kasir berbasis Web
 
 File database bisa ditemukan di /assets/db/ifkasir.sql
 
